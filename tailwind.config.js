@@ -9,7 +9,11 @@ module.exports = {
          xl: '1440px',
       },
       extend: {
-         colors: {},
+         colors: {
+            customBlack: '#191919',
+            white: '#FFFFFF',
+            customOrange: '#D87D4A',
+         },
       },
    },
    plugins: [],
