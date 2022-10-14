@@ -1,16 +1,21 @@
 import Head from 'next/head'
 import React from 'react'
+import Nav from './Header/Nav'
+import Footer from './Footer/Footer'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, header }) => {
    return (
       <>
          <Head>
-            <meta name="viewport" content="width=device-width, initial-scale-1" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <meta name="description" content="page description will take a place" />
             <meta name="keybords" content="keybord tag will take a place" />
-            <tilte>page title</tilte>
+            <title>page title</title>
          </Head>
+
+         <Nav header={header} />
          <main>{children}</main>
+         <Footer />
       </>
    )
 }

@@ -1,24 +1,27 @@
 import contentfulClient from '../utils/contentfulClient'
+import Layout from '../components/Layout'
 
 export async function getStaticProps() {
-   const productsFetch = contentfulClient.getEntries({
-      content_type: 'products',
+   const headerFetch = contentfulClient.getEntries({
+      content_type: 'header',
    })
 
-   const [products] = await Promise.all([productsFetch])
+   const [header] = await Promise.all([headerFetch])
 
    return {
       props: {
-         products: products.items,
+         header: header.items[0].fields,
       },
    }
 }
 
-const Index = ({ products }) => {
+const Index = ({ header, headerThumbnail }) => {
    return (
-      <div>
-         <p>Nextjs</p>
-      </div>
+      <Layout header={header}>
+         <div>
+            <p>Nextjs</p>
+         </div>
+      </Layout>
    )
 }
 
