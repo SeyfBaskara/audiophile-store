@@ -3,7 +3,7 @@ import React from 'react'
 import Nav from './Header/Nav'
 import Footer from './Footer/Footer'
 
-const Layout = ({ children, header }) => {
+const Layout = ({ children, header, footer }) => {
    return (
       <>
          <Head>
@@ -15,7 +15,7 @@ const Layout = ({ children, header }) => {
 
          <Nav header={header} />
          <main>{children}</main>
-         <Footer />
+         <Footer footer={footer} />
       </>
    )
 }

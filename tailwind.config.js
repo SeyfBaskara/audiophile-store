@@ -9,7 +9,7 @@ module.exports = {
          xl: '1440px',
       },
       fontSize: {
-         sm: '0.8rem',
+         sm: '0.9rem',
          base: '1rem',
          xl: '1.25rem',
          xl2: '1.563rem',
@@ -25,6 +25,9 @@ module.exports = {
             lotionWhite: '#FAFAFA',
             peruOrange: '#D87D4A',
             spanishGray: '#979797',
+         },
+         height: {
+            128: '32rem',
          },
       },
    },

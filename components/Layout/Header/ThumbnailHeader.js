@@ -14,7 +14,13 @@ const ThumbnailHeader = ({ thumbnail }) => {
             <SeeProductButton />
          </div>
          <div>
-            <Image src={`https:${image[0].fields.file.url}`} alt="xx99 mark two headphones" width={720} height={1200} />
+            <Image
+               src={`https:${image[0].fields.file.url}`}
+               alt="xx99 mark two headphones"
+               width={720}
+               height={1200}
+               priority
+            />
          </div>
       </section>
    )

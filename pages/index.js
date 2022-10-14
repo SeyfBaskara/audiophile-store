@@ -1,28 +1,14 @@
-import contentfulClient from '../utils/contentfulClient'
-import Layout from '../components/Layout'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-export async function getStaticProps() {
-   const headerFetch = contentfulClient.getEntries({
-      content_type: 'header',
+const Index = () => {
+   const router = useRouter()
+
+   useEffect(() => {
+      router.push(`/home`)
    })
 
-   const [header] = await Promise.all([headerFetch])
-
-   return {
-      props: {
-         header: header.items[0].fields,
-      },
-   }
-}
-
-const Index = ({ header, headerThumbnail }) => {
-   return (
-      <Layout header={header}>
-         <div>
-            <p>Nextjs</p>
-         </div>
-      </Layout>
-   )
+   return <></>
 }
 
 export default Index
