@@ -6,8 +6,9 @@ const Footer = ({ footer }) => {
    const { navigation, description, copyright } = footer
 
    return (
-      <footer className="bg-sectionBlack py-16">
+      <footer className="relative bg-sectionBlack pt-4 pb-16">
          <section className="text-center m-auto space-y-11 px-7">
+            <div className="bg-peruOrange h-1 w-28 absolute top-0 left-32"></div>
             <div className="space-y-10">
                <Image src="/images/logo.svg" alt="website logo" width={143} height={25} />
                <div className="flex flex-col gap-5">
