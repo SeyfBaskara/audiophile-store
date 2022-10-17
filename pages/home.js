@@ -1,5 +1,6 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout'
+import MenuWidget from '../components/MenuWidget/MenuWidget'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -9,22 +10,28 @@ export async function getStaticProps() {
       content_type: 'footer',
    })
 
-   const [header, footer] = await Promise.all([headerFetch, footerFetch])
+   const menuWidgetFetch = contentfulClient.getEntries({
+      content_type: 'menuWidget',
+   })
+
+   const [header, footer, menuWidgetProduct] = await Promise.all([headerFetch, footerFetch, menuWidgetFetch])
 
    return {
       props: {
          header: header.items[0].fields,
          footer: footer.items[0].fields,
+         menuWidgetProduct: menuWidgetProduct.items,
       },
    }
 }
 
-const Home = ({ header, footer }) => {
+const Home = ({ header, footer, menuWidgetProduct }) => {
    return (
       <Layout header={header} footer={footer}>
-         <div>
+         <>
+            <MenuWidget menuWidgetProduct={menuWidgetProduct} />
             <p>Nextjs</p>
-         </div>
+         </>
       </Layout>
    )
 }
