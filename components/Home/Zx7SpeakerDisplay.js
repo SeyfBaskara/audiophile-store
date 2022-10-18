@@ -1,0 +1,27 @@
+import React from 'react'
+import SeeProductButton from '../Buttons/SeeProductButton'
+import ShowImage from '../ShowImages/ShowImage'
+
+const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
+   const { image, name } = zx7Speaker.fields
+
+   const customStyle = {
+      button: 'bg-none text-sectionBlack border-2 border-sectionBlack',
+   }
+
+   return (
+      <section className="relative mt-20">
+         <div className="rounded overflow-hidden">
+            <ShowImage images={image} />
+         </div>
+         <div className="absolute top-24 left-6">
+            <h1 className="text-sectionBlack text-[1.8rem] leading-tight tracking-wider font-semibold mb-8">
+               {name.toUpperCase()}
+            </h1>
+            <SeeProductButton customStyle={customStyle.button} />
+         </div>
+      </section>
+   )
+}
+
+export default Zx7SpeakerDisplay

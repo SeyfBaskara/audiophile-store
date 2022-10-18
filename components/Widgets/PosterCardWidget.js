@@ -5,7 +5,7 @@ import ReactMarkDown from 'react-markdown'
 const PosterCardWidget = ({ posterCard }) => {
    const { description, image, title } = posterCard
    return (
-      <section className="px-6 my-20">
+      <section className="my-20">
          <div className="rounded-md overflow-hidden">
             <ShowImage images={image} />
          </div>

@@ -4,7 +4,7 @@ import ShowImage from '../ShowImages/ShowImage'
 
 const MenuWidget = ({ menuWidgetProduct }) => {
    return (
-      <section className="py-28 px-6">
+      <section className="py-28">
          <ul className="flex flex-col gap-24">
             {menuWidgetProduct.map((item, index) => (
                <li key={index} className="relative flex flex-col justify-end items-center bg-fleshWhite h-44 rounded ">

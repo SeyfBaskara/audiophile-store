@@ -6,7 +6,7 @@ const ThumbnailHeader = ({ thumbnail }) => {
    const { description, image, title } = thumbnail.fields
 
    const customStyle = {
-      bgColor: 'bg-peruOrange',
+      button: 'bg-peruOrange text-white',
    }
 
    return (
@@ -15,7 +15,7 @@ const ThumbnailHeader = ({ thumbnail }) => {
             <p className="text-spanishGray tracking-[.55em]">NEW PRODUCT</p>
             <h1 className="text-white text-xl4 font-semibold leading-none">{title.toUpperCase()}</h1>
             <p className="text-spanishGray">{description}</p>
-            <SeeProductButton customStyle={customStyle} />
+            <SeeProductButton customStyle={customStyle.button} />
          </div>
          <div>
             <Image

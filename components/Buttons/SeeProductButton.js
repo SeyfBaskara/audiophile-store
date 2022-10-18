@@ -7,7 +7,7 @@ const SeeProductButton = ({ customStyle }) => {
    return (
       <>
          <button
-            className={`${customStyle.bgColor} text-white text-[0.85rem] font-semibold tracking-widest py-4 px-8 m-auto`}
+            className={`${customStyle} text-[0.85rem] font-semibold tracking-widest py-4 px-8 m-auto`}
             onClick={handleOnClick}
          >
             SEE PRODUCT

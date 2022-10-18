@@ -14,7 +14,7 @@ const Layout = ({ children, header, footer }) => {
          </Head>
 
          <Nav header={header} />
-         <main>{children}</main>
+         <main className="px-6">{children}</main>
          <Footer footer={footer} />
       </>
    )
