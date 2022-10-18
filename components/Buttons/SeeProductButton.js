@@ -6,10 +6,7 @@ const SeeProductButton = ({ customStyle }) => {
    }
    return (
       <>
-         <button
-            className={`${customStyle} text-[0.85rem] font-semibold tracking-widest py-4 px-8 m-auto`}
-            onClick={handleOnClick}
-         >
+         <button className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-8 m-auto`} onClick={handleOnClick}>
             SEE PRODUCT
          </button>
       </>

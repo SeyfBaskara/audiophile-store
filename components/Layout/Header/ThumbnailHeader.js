@@ -6,7 +6,7 @@ const ThumbnailHeader = ({ thumbnail }) => {
    const { description, image, title } = thumbnail.fields
 
    const customStyle = {
-      button: 'bg-peruOrange text-white',
+      button: 'bg-peruOrange text-white font-semibold',
    }
 
    return (

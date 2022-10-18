@@ -2,20 +2,20 @@ import React from 'react'
 import SeeProductButton from '../Buttons/SeeProductButton'
 import ShowImage from '../ShowImages/ShowImage'
 
-const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
-   const { image, name } = zx7Speaker.fields
+const Yx1HeadphoneDisplay = ({ yx1Headphones }) => {
+   const { image, name } = yx1Headphones.fields
 
    const customStyle = {
-      button: 'bg-none text-sectionBlack font-bold border-2 border-sectionBlack',
+      button: 'bg-none text-sectionBlack font-bold border-[2px] border-sectionBlack',
    }
 
    return (
-      <section className="relative mt-5">
+      <section className="flex flex-col gap-5 mt-5">
          <div className="rounded overflow-hidden">
             <ShowImage images={image} />
          </div>
-         <div className="absolute top-24 left-6">
-            <h1 className="text-sectionBlack text-[1.8rem] leading-tight tracking-wider font-semibold mb-8">
+         <div className="bg-fleshWhite py-10 pl-5 rounded">
+            <h1 className="text-sectionBlack text-[2rem] leading-tight tracking-wider font-semibold mb-5">
                {name.toUpperCase()}
             </h1>
             <SeeProductButton customStyle={customStyle.button} />
@@ -24,4 +24,4 @@ const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
    )
 }
 
-export default Zx7SpeakerDisplay
+export default Yx1HeadphoneDisplay
