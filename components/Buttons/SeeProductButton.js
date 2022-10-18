@@ -1,13 +1,13 @@
 import React from 'react'
 
-const SeeProductButton = () => {
+const SeeProductButton = ({ customStyle }) => {
    const handleOnClick = () => {
       console.log('see product click')
    }
    return (
       <>
          <button
-            className="bg-peruOrange text-white font-semibold tracking-widest py-4 px-8 m-auto"
+            className={`${customStyle.bgColor} text-white text-[0.85rem] font-semibold tracking-widest py-4 px-8 m-auto`}
             onClick={handleOnClick}
          >
             SEE PRODUCT
@@ -17,3 +17,9 @@ const SeeProductButton = () => {
 }
 
 export default SeeProductButton
+
+/**
+ * should adapt the button style to diffirent component's required style, like a bg color, border and size
+ * should route products or product details page according slug
+ *
+ */

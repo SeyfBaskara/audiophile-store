@@ -14,3 +14,7 @@ const ShowImage = ({ images }) => {
 }
 
 export default ShowImage
+
+/**
+ * should display image according screen size
+ */

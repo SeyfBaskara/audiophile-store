@@ -25,6 +25,7 @@ module.exports = {
             lotionWhite: '#FAFAFA',
             peruOrange: '#D87D4A',
             spanishGray: '#979797',
+            borderWhite: '#D8D8D8',
          },
          height: {
             128: '32rem',
