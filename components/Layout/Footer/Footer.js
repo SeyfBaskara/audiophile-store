@@ -1,9 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import Nav from '../Nav'
 
 const Footer = ({ footer }) => {
    const { navigation, description, copyright } = footer
+
+   const customStyle = {
+      navBar: 'flex flex-col gap-5',
+   }
 
    return (
       <footer className="relative bg-sectionBlack pt-4 pb-16">
@@ -11,13 +15,7 @@ const Footer = ({ footer }) => {
             <div className="bg-peruOrange h-1 w-28 absolute top-0 left-32"></div>
             <div className="space-y-10">
                <Image src="/images/logo.svg" alt="website logo" width={143} height={25} />
-               <div className="flex flex-col gap-5">
-                  {navigation.map((nav, index) => (
-                     <Link href={nav.slug === 'home' ? '/home' : `/category/${nav.slug}`} key={index}>
-                        <a className="text-white tracking-widest font-light text-sm">{nav.name.toUpperCase()}</a>
-                     </Link>
-                  ))}
-               </div>
+               <Nav navigation={navigation} customStyle={customStyle.navBar} />
             </div>
             <p className="text-spanishGray text-sm">{description}</p>
 
