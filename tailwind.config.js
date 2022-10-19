@@ -20,6 +20,7 @@ module.exports = {
       extend: {
          colors: {
             sectionBlack: '#191919',
+            imgBlack: '#1f1f1f',
             white: '#FFFFFF',
             fleshWhite: '#F1F1F1',
             lotionWhite: '#FAFAFA',

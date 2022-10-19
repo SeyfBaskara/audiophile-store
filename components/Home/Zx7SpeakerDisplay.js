@@ -14,7 +14,7 @@ const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
          <div className="rounded overflow-hidden">
             <ShowImage images={image} />
          </div>
-         <div className="absolute top-24 left-6">
+         <div className="absolute top-24 left-6 sm:top-8 md:top-10 md:left-20 lg:top-20">
             <h1 className="text-sectionBlack text-[1.8rem] leading-tight tracking-wider font-semibold mb-8">
                {name.toUpperCase()}
             </h1>
