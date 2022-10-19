@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
-import Nav from './Header/Nav'
+import Header from './Header/Header'
 import Footer from './Footer/Footer'
 
 const Layout = ({ children, header, footer }) => {
@@ -13,7 +13,7 @@ const Layout = ({ children, header, footer }) => {
             <title>page title</title>
          </Head>
 
-         <Nav header={header} />
+         <Header header={header} />
          <main className="px-6">{children}</main>
          <Footer footer={footer} />
       </>
