@@ -14,7 +14,7 @@ const Header = ({ header }) => {
 
    return (
       <header className="bg-sectionBlack ">
-         <section className="flex justify-between items-center px-6 py-8 border-b-[1px] border-spanishGray lg:px-0 lg:mx-20">
+         <section className="flex justify-between items-center px-6 py-8 border-b-[1px] border-spanishGray lg:px-0 lg:mx-24">
             <div className="flex justify-between items-center w-56 lg:w-full lg:flex-row-reverse lg:justify-end lg:gap-36">
                {size.width >= 976 ? (
                   <Nav navigation={navigation} customStyle={customStyle.navBar} />
