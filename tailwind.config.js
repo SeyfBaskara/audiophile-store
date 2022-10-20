@@ -21,10 +21,12 @@ module.exports = {
          colors: {
             sectionBlack: '#191919',
             imgBlack: '#1f1f1f',
+            hoverBlack: '#4C4C4C',
             white: '#FFFFFF',
             fleshWhite: '#F1F1F1',
             lotionWhite: '#FAFAFA',
             peruOrange: '#D87D4A',
+            hoverOrange: '#fbaf85',
             spanishGray: '#979797',
             borderWhite: '#D8D8D8',
          },

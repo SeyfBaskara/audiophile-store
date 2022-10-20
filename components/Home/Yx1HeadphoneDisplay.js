@@ -6,7 +6,8 @@ const Yx1HeadphoneDisplay = ({ yx1Headphones }) => {
    const { image, name } = yx1Headphones.fields
 
    const customStyle = {
-      button: 'bg-none text-sectionBlack font-bold border-[2px] border-sectionBlack ml-5 md:ml-16',
+      button:
+         'bg-none text-sectionBlack font-bold border-[2px] border-sectionBlack ml-5 md:ml-16 hover:bg-sectionBlack hover:text-white',
    }
 
    return (

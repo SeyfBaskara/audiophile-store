@@ -6,7 +6,7 @@ const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
    const { image, name } = zx7Speaker.fields
 
    const customStyle = {
-      button: 'bg-none text-sectionBlack font-bold border-2 border-sectionBlack',
+      button: 'bg-none text-sectionBlack font-bold border-2 border-sectionBlack hover:bg-sectionBlack hover:text-white',
    }
 
    return (

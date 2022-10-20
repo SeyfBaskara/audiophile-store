@@ -8,7 +8,9 @@ const Nav = ({ navigation, customStyle }) => {
             {navigation.map((nav, index) => (
                <li key={index}>
                   <Link href={nav.slug === 'home' ? '/home' : `/category/${nav.slug}`}>
-                     <a className="text-white tracking-widest text-sm">{nav.name.toUpperCase()}</a>
+                     <a className="text-white tracking-widest text-sm hover:text-peruOrange">
+                        {nav.name.toUpperCase()}
+                     </a>
                   </Link>
                </li>
             ))}

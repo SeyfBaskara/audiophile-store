@@ -16,7 +16,7 @@ const MenuWidget = ({ menuWidgetProduct }) => {
                   </div>
                   <h1 className="pb-4 font-semibold tracking-wider text-lg">{item.fields.title.toUpperCase()}</h1>
                   <Link href={`/category/${item.fields.slug}`}>
-                     <a className="pb-6 text-spanishGray tracking-widest font-semibold">
+                     <a className="pb-6 text-spanishGray tracking-widest font-semibold hover:text-peruOrange">
                         SHOP <span className="text-peruOrange text-xl">&#62;</span>
                      </a>
                   </Link>

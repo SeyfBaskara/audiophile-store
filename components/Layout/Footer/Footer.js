@@ -21,7 +21,7 @@ const Footer = ({ footer }) => {
 
             <div className="flex flex-col gap-10 sm:flex-row sm:justify-between sm:items-center sm:gap-0">
                <p className="text-spanishGray">{copyright}</p>
-               <div className="flex justify-center gap-3">
+               <div className="flex justify-center gap-3 cursor-pointer ">
                   {['facebook', 'twitter', 'instagram'].map((path, index) => (
                      <Image
                         src={`/images/icon-${path}.svg`}
