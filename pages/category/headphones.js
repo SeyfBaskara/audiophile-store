@@ -1,10 +1,31 @@
-import React from 'react'
+import Layout from '../../components/Layout'
+import contentfulClient from '../../utils/contentfulClient'
 
-const Headphones = () => {
+export async function getStaticProps() {
+   const headerFetch = contentfulClient.getEntries({
+      content_type: 'header',
+   })
+   const footerFetch = contentfulClient.getEntries({
+      content_type: 'footer',
+   })
+
+   const [header, footer] = await Promise.all([headerFetch, footerFetch])
+
+   return {
+      props: {
+         header: header.items[0].fields,
+         footer: footer.items[0].fields,
+      },
+   }
+}
+
+const Headphones = ({ header, footer }) => {
+   const { navigation } = header
+
    return (
-      <div>
+      <Layout header={header} footer={footer} headerName={navigation[1].name}>
          <p>Headphone page</p>
-      </div>
+      </Layout>
    )
 }
 

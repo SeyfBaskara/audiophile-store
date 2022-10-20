@@ -4,7 +4,7 @@ import ThumbnailHeader from './ThumbnailHeader'
 import Nav from '../Nav'
 import { useWindowSize } from '../../Hooks/UseWindowSize'
 
-const Header = ({ header }) => {
+const Header = ({ header, headerName }) => {
    const { navigation, thumbnail } = header
    const size = useWindowSize()
 
@@ -14,7 +14,11 @@ const Header = ({ header }) => {
 
    return (
       <header className="bg-sectionBlack ">
-         <section className="flex justify-between items-center px-6 py-8 border-b-[1px] border-spanishGray lg:px-0 lg:mx-24">
+         <section
+            className={`flex justify-between items-center px-6 py-8 ${
+               !headerName && 'border-b-[1px] border-spanishGray'
+            }  lg:px-0 lg:mx-24`}
+         >
             <div className="flex justify-between items-center w-56 lg:w-full lg:flex-row-reverse lg:justify-end lg:gap-36">
                {size.width >= 976 ? (
                   <Nav navigation={navigation} customStyle={customStyle.navBar} />
@@ -27,7 +31,13 @@ const Header = ({ header }) => {
                <Image src="/images/icon-cart.svg" alt="cart icon" width={23} height={20} />
             </div>
          </section>
-         <ThumbnailHeader thumbnail={thumbnail} />
+         {headerName ? (
+            <div>
+               <h1 className="text-white text-xl2 text-center py-7 pr-4 sm:pr-0">{headerName.toUpperCase()}</h1>
+            </div>
+         ) : (
+            <ThumbnailHeader thumbnail={thumbnail} />
+         )}
       </header>
    )
 }
