@@ -1,10 +1,54 @@
-import React from 'react'
+import Layout from '../../components/Layout'
+import MenuWidget from '../../components/Widgets/MenuWidget'
+import PosterCardWidget from '../../components/Widgets/PosterCardWidget'
+import contentfulClient from '../../utils/contentfulClient'
+import SpeakersProductDisplay from '../../components/Speakers/index'
 
-const Speakers = () => {
+export async function getStaticProps() {
+   const headerFetch = contentfulClient.getEntries({
+      content_type: 'header',
+   })
+   const footerFetch = contentfulClient.getEntries({
+      content_type: 'footer',
+   })
+   const menuWidgetFetch = contentfulClient.getEntries({
+      content_type: 'menuWidget',
+   })
+   const sharedWidgetFetch = contentfulClient.getEntries({
+      content_type: 'sharedWidget',
+   })
+   const speakersProductFetch = contentfulClient.getEntries({
+      content_type: 'speakersProduct',
+   })
+
+   const [header, footer, menuWidgetProduct, posterCard, speakersProduct] = await Promise.all([
+      headerFetch,
+      footerFetch,
+      menuWidgetFetch,
+      sharedWidgetFetch,
+      speakersProductFetch,
+   ])
+
+   return {
+      props: {
+         header: header.items[0].fields,
+         footer: footer.items[0].fields,
+         menuWidgetProduct: menuWidgetProduct.items,
+         posterCard: posterCard.items[0].fields,
+         speakersProduct: speakersProduct.items,
+      },
+   }
+}
+
+const Speakers = ({ header, footer, menuWidgetProduct, posterCard, speakersProduct }) => {
+   const { navigation } = header
+
    return (
-      <div>
-         <p>Speakers page</p>
-      </div>
+      <Layout header={header} footer={footer} headerName={navigation[2].name}>
+         <SpeakersProductDisplay speakersProduct={speakersProduct} />
+         <MenuWidget menuWidgetProduct={menuWidgetProduct} />
+         <PosterCardWidget posterCard={posterCard} />
+      </Layout>
    )
 }
 

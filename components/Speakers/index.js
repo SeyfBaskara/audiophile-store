@@ -1,10 +1,10 @@
 import React from 'react'
 import ProductList from '../Products/ProductList'
 
-const index = ({ headphonesProduct }) => {
+const index = ({ speakersProduct }) => {
    return (
       <>
-         <ProductList products={headphonesProduct} />
+         <ProductList products={speakersProduct} />
       </>
    )
 }

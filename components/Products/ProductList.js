@@ -1,17 +1,17 @@
 import React from 'react'
-import HeadphonesProduct from './HeadphonesProduct'
+import Product from './Product'
 
-const HeadphonesProductList = ({ headphonesProduct }) => {
+const ProductList = ({ products }) => {
    return (
       <section className="mt-20 mb-56">
          <ul className="flex flex-col gap-28">
-            {headphonesProduct
+            {products
                .sort((a, b) => a.fields.order - b.fields.order)
                .map((object, i) => {
                   const objectField = object.fields
                   return (
                      <li key={i}>
-                        <HeadphonesProduct objectField={objectField} />
+                        <Product objectField={objectField} />
                      </li>
                   )
                })}
@@ -20,4 +20,4 @@ const HeadphonesProductList = ({ headphonesProduct }) => {
    )
 }
 
-export default HeadphonesProductList
+export default ProductList

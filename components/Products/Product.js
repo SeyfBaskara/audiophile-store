@@ -2,7 +2,7 @@ import React from 'react'
 import ShowImage from '../ShowImages/ShowImage'
 import SeeProductButton from '../Buttons/SeeProductButton'
 
-const HeadphonesProduct = ({ objectField }) => {
+const Product = ({ objectField }) => {
    const { title, productName, description, images, order } = objectField
 
    const customStyle = {
@@ -28,4 +28,4 @@ const HeadphonesProduct = ({ objectField }) => {
    )
 }
 
-export default HeadphonesProduct
+export default Product
