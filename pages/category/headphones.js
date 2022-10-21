@@ -2,6 +2,7 @@ import Layout from '../../components/Layout'
 import MenuWidget from '../../components/Widgets/MenuWidget'
 import PosterCardWidget from '../../components/Widgets/PosterCardWidget'
 import contentfulClient from '../../utils/contentfulClient'
+import HeadphonesProductDisplay from '../../components/Headphones/index'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -10,19 +11,22 @@ export async function getStaticProps() {
    const footerFetch = contentfulClient.getEntries({
       content_type: 'footer',
    })
-
    const menuWidgetFetch = contentfulClient.getEntries({
       content_type: 'menuWidget',
    })
    const sharedWidgetFetch = contentfulClient.getEntries({
       content_type: 'sharedWidget',
    })
+   const headphonesProductFetch = contentfulClient.getEntries({
+      content_type: 'headphonesProduct',
+   })
 
-   const [header, footer, menuWidgetProduct, posterCard] = await Promise.all([
+   const [header, footer, menuWidgetProduct, posterCard, headphonesProduct] = await Promise.all([
       headerFetch,
       footerFetch,
       menuWidgetFetch,
       sharedWidgetFetch,
+      headphonesProductFetch,
    ])
 
    return {
@@ -31,15 +35,17 @@ export async function getStaticProps() {
          footer: footer.items[0].fields,
          menuWidgetProduct: menuWidgetProduct.items,
          posterCard: posterCard.items[0].fields,
+         headphonesProduct: headphonesProduct.items,
       },
    }
 }
 
-const Headphones = ({ header, footer, menuWidgetProduct, posterCard }) => {
+const Headphones = ({ header, footer, menuWidgetProduct, posterCard, headphonesProduct }) => {
    const { navigation } = header
 
    return (
       <Layout header={header} footer={footer} headerName={navigation[1].name}>
+         <HeadphonesProductDisplay headphonesProduct={headphonesProduct} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />
       </Layout>
