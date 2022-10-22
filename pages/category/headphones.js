@@ -2,7 +2,7 @@ import Layout from '../../components/Layout'
 import MenuWidget from '../../components/Widgets/MenuWidget'
 import PosterCardWidget from '../../components/Widgets/PosterCardWidget'
 import contentfulClient from '../../utils/contentfulClient'
-import HeadphonesProductDisplay from '../../components/Headphones/index'
+import ProductDisplay from '../../components/Products/index'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -45,7 +45,7 @@ const Headphones = ({ header, footer, menuWidgetProduct, posterCard, headphonesP
 
    return (
       <Layout header={header} footer={footer} headerName={navigation[1].name}>
-         <HeadphonesProductDisplay headphonesProduct={headphonesProduct} />
+         <ProductDisplay products={headphonesProduct} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />
       </Layout>
