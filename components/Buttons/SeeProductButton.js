@@ -1,12 +1,15 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 
-const SeeProductButton = ({ customStyle }) => {
-   const handleOnClick = () => {
-      console.log('see product click')
-   }
+const SeeProductButton = ({ customStyle, slug }) => {
+   const router = useRouter()
+
    return (
       <>
-         <button className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`} onClick={handleOnClick}>
+         <button
+            className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`}
+            onClick={() => router.push(`/details/${slug}`)}
+         >
             SEE PRODUCT
          </button>
       </>
@@ -14,9 +17,3 @@ const SeeProductButton = ({ customStyle }) => {
 }
 
 export default SeeProductButton
-
-/**
- * should adapt the button style to diffirent component's required style, like a bg color, border and size
- * should route products or product details page according slug
- *
- */
