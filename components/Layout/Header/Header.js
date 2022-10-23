@@ -4,7 +4,7 @@ import ThumbnailHeader from './ThumbnailHeader'
 import Nav from '../Nav'
 import { useWindowSize } from '../../Hooks/UseWindowSize'
 
-const Header = ({ header, headerName }) => {
+const Header = ({ header, headerName, detailsPage }) => {
    const { navigation, thumbnail } = header
    const size = useWindowSize()
 
@@ -35,6 +35,8 @@ const Header = ({ header, headerName }) => {
             <div>
                <h1 className="text-white text-xl2 text-center py-7 pr-4 sm:pr-0">{headerName.toUpperCase()}</h1>
             </div>
+         ) : detailsPage ? (
+            ''
          ) : (
             <ThumbnailHeader thumbnail={thumbnail} />
          )}
