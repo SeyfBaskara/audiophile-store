@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import ShowImage from '../ShowImages/ShowImage'
 import SeeProductButton from '../Buttons/SeeProductButton'
 import AddToCartButton from '../Buttons/AddToCartButton'
@@ -6,6 +7,7 @@ import { formatCurrency } from '../../utils/formatCurrency'
 
 const Product = ({ objectField, price, details }) => {
    const { title, productName, description, images, order, slug } = objectField
+   console.log(slug.split('-').at(-1))
 
    const customStyle = {
       button: 'bg-peruOrange text-white font-semibold hover:bg-hoverOrange',
@@ -17,6 +19,11 @@ const Product = ({ objectField, price, details }) => {
             details ? 'md:flex-row' : order % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'
          } md:gap-8 lg:gap-28`}
       >
+         {details && (
+            <Link href={`/category/${slug.split('-').at(-1)}`}>
+               <a className="text-spanishGray mt-5">Go Back</a>
+            </Link>
+         )}
          <div className="rounded overflow-hidden lg:max-w-lg">
             <ShowImage images={images} />
          </div>
@@ -34,7 +41,7 @@ const Product = ({ objectField, price, details }) => {
             <p className={`text-spanishGray max-w-xl ${!details && 'sm:px-10'} md:px-0 lg:text-sm lg:pr-10`}>
                {description}
             </p>
-            {price && <p className="text-[1.3rem] font-semibold">{formatCurrency(price)}</p>}
+            {details && <p className="text-[1.3rem] font-semibold">{formatCurrency(price)}</p>}
             {details ? (
                <AddToCartButton customStyle={customStyle.button} />
             ) : (
@@ -46,8 +53,3 @@ const Product = ({ objectField, price, details }) => {
 }
 
 export default Product
-
-/**
- * should display add cart button instead of seeproduct button on details page
- *
- */
