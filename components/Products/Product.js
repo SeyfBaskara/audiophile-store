@@ -1,9 +1,10 @@
 import React from 'react'
 import ShowImage from '../ShowImages/ShowImage'
 import SeeProductButton from '../Buttons/SeeProductButton'
+import { formatCurrency } from '../../utils/formatCurrency'
 
-const Product = ({ objectField }) => {
-   const { title, productName, description, images, order } = objectField
+const Product = ({ objectField, price }) => {
+   const { title, productName, description, images, order, slug } = objectField
 
    const customStyle = {
       button: 'bg-peruOrange text-white font-semibold hover:bg-hoverOrange',
@@ -22,7 +23,8 @@ const Product = ({ objectField }) => {
                {productName.toUpperCase()}
             </h1>
             <p className="text-spanishGray sm:px-10 md:px-0 lg:text-sm lg:pr-10">{description}</p>
-            <SeeProductButton customStyle={customStyle.button} />
+            {price && <p>{formatCurrency(price)}</p>}
+            <SeeProductButton customStyle={customStyle.button} slug={slug} />
          </div>
       </div>
    )

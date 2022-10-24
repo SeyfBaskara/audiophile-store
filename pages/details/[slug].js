@@ -3,13 +3,21 @@ import contentfulClient from '../../utils/contentfulClient'
 import Layout from '../../components/Layout/index'
 import MenuWidget from '../../components/Widgets/MenuWidget'
 import PosterCardWidget from '../../components/Widgets/PosterCardWidget'
+import DisplayProductDetails from '../../components/ProductDetails/index'
+import { useRouter } from 'next/router'
 
 export async function getStaticPaths() {
-   const paths = [
-      {
-         params: { slug: 'xz9-Mark-II-headphones' },
-      },
-   ]
+   const { items: productDetails } = await contentfulClient.getEntries({
+      content_type: 'productDetails',
+   })
+
+   const paths = productDetails.map((product) => {
+      return {
+         params: {
+            slug: product.fields.slug,
+         },
+      }
+   })
 
    return {
       paths,
@@ -30,12 +38,16 @@ export async function getStaticProps() {
    const sharedWidgetFetch = contentfulClient.getEntries({
       content_type: 'sharedWidget',
    })
+   const productDetailsFetch = contentfulClient.getEntries({
+      content_type: 'productDetails',
+   })
 
-   const [header, footer, menuWidgetProduct, posterCard] = await Promise.all([
+   const [header, footer, menuWidgetProduct, posterCard, productDetails] = await Promise.all([
       headerFetch,
       footerFetch,
       menuWidgetFetch,
       sharedWidgetFetch,
+      productDetailsFetch,
    ])
 
    return {
@@ -44,13 +56,19 @@ export async function getStaticProps() {
          footer: footer.items[0].fields,
          menuWidgetProduct: menuWidgetProduct.items,
          posterCard: posterCard.items[0].fields,
+         productDetails: productDetails.items,
       },
    }
 }
 
-const ProductDetails = ({ header, footer, menuWidgetProduct, posterCard }) => {
+const ProductDetails = ({ header, footer, menuWidgetProduct, posterCard, productDetails }) => {
+   const router = useRouter()
+   const { slug } = router.query
+   const { fields: productDetail } = productDetails.find((product) => product.fields.slug === slug)
+
    return (
       <Layout header={header} footer={footer} detailsPage={true}>
+         <DisplayProductDetails productDetails={productDetail} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />
       </Layout>
