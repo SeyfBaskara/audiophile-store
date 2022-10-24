@@ -17,7 +17,7 @@ const Product = ({ objectField, price, details }) => {
             details ? 'md:flex-row' : order % 2 !== 0 ? 'md:flex-row' : 'md:flex-row-reverse'
          } md:gap-8 lg:gap-28`}
       >
-         <div className="rounded overflow-hidden">
+         <div className="rounded overflow-hidden lg:max-w-lg">
             <ShowImage images={images} />
          </div>
          <div
@@ -31,7 +31,9 @@ const Product = ({ objectField, price, details }) => {
             <h1 className={`text-md font-bold tracking-wider leading-9 w-72  sm:text-large md:text-md `}>
                {productName.toUpperCase()}
             </h1>
-            <p className={`text-spanishGray ${!details && 'sm:px-10'} md:px-0 lg:text-sm lg:pr-10`}>{description}</p>
+            <p className={`text-spanishGray max-w-xl ${!details && 'sm:px-10'} md:px-0 lg:text-sm lg:pr-10`}>
+               {description}
+            </p>
             {price && <p className="text-[1.3rem] font-semibold">{formatCurrency(price)}</p>}
             {details ? (
                <AddToCartButton customStyle={customStyle.button} />
