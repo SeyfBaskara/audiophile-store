@@ -3,7 +3,7 @@ import SeeProductButton from '../../Buttons/SeeProductButton'
 import ShowImage from '../../ShowImages/ShowImage'
 
 const ThumbnailHeader = ({ thumbnail }) => {
-   const { description, image, title } = thumbnail.fields
+   const { description, image, title, slug } = thumbnail.fields
 
    const customStyle = {
       button: 'bg-peruOrange text-white font-semibold hover:bg-hoverOrange',
@@ -21,7 +21,7 @@ const ThumbnailHeader = ({ thumbnail }) => {
                {title.toUpperCase()}
             </h1>
             <p className="text-spanishGray">{description}</p>
-            <SeeProductButton customStyle={customStyle.button} />
+            <SeeProductButton customStyle={customStyle.button} slug={slug} />
          </div>
          <div>
             <ShowImage images={image} priority />

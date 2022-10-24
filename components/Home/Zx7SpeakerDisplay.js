@@ -3,7 +3,7 @@ import SeeProductButton from '../Buttons/SeeProductButton'
 import ShowImage from '../ShowImages/ShowImage'
 
 const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
-   const { image, name } = zx7Speaker.fields
+   const { image, name, slug } = zx7Speaker.fields
 
    const customStyle = {
       button: 'bg-none text-sectionBlack font-bold border-2 border-sectionBlack hover:bg-sectionBlack hover:text-white',
@@ -18,7 +18,7 @@ const Zx7SpeakerDisplay = ({ zx7Speaker }) => {
             <h1 className="text-sectionBlack text-[1.8rem] leading-tight tracking-wider font-semibold mb-8">
                {name.toUpperCase()}
             </h1>
-            <SeeProductButton customStyle={customStyle.button} />
+            <SeeProductButton customStyle={customStyle.button} slug={slug} />
          </div>
       </section>
    )

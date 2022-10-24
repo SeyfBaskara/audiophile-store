@@ -4,7 +4,7 @@ import ShowImage from '../ShowImages/ShowImage'
 import Image from 'next/image'
 
 const Zx9SpeakerDisplay = ({ zx9Speaker }) => {
-   const { description, image, name } = zx9Speaker.fields
+   const { description, image, name, slug } = zx9Speaker.fields
 
    const customStyle = {
       button: 'bg-sectionBlack text-white font-semibold hover:bg-hoverBlack',
@@ -31,7 +31,7 @@ const Zx9SpeakerDisplay = ({ zx9Speaker }) => {
                      {name.toUpperCase()}
                   </h1>
                   <p className="text-fleshWhite my-6 font-light leading-loose">{description}</p>
-                  <SeeProductButton customStyle={customStyle.button} />
+                  <SeeProductButton customStyle={customStyle.button} slug={slug} />
                </div>
             </div>
          </div>

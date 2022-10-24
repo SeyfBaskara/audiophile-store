@@ -3,7 +3,7 @@ import SeeProductButton from '../Buttons/SeeProductButton'
 import ShowImage from '../ShowImages/ShowImage'
 
 const Yx1HeadphoneDisplay = ({ yx1Headphones }) => {
-   const { image, name } = yx1Headphones.fields
+   const { image, name, slug } = yx1Headphones.fields
 
    const customStyle = {
       button:
@@ -19,7 +19,7 @@ const Yx1HeadphoneDisplay = ({ yx1Headphones }) => {
             <h1 className="text-sectionBlack text-[2rem] pl-5 leading-tight tracking-wider font-semibold mb-5 sm:text-[1.5rem] md:pl-16">
                {name.toUpperCase()}
             </h1>
-            <SeeProductButton customStyle={customStyle.button} />
+            <SeeProductButton customStyle={customStyle.button} slug={slug} />
          </div>
       </section>
    )
