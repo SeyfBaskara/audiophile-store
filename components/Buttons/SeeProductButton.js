@@ -7,7 +7,7 @@ const SeeProductButton = ({ customStyle, slug }) => {
    return (
       <>
          <button
-            className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`}
+            className={` text-[0.85rem] tracking-widest py-4 px-6 max-w-2xl ${customStyle}`}
             onClick={() => router.push(`/details/${slug}`)}
          >
             SEE PRODUCT
