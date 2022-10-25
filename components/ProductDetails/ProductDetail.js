@@ -4,7 +4,7 @@ const ProductDetail = ({ features, includes }) => {
    return (
       <div className="my-20 flex flex-col gap-16 lg:flex-row lg:gap-0 lg:justify-between lg:max-w-5xl">
          <div className="max-w-3xl lg:max-w-2xl ">
-            <h1 className="text-[1.7rem] font-semibold tracking-wide">FEATURES</h1>
+            <h1 className="text-[1.5rem] font-semibold tracking-wide">FEATURES</h1>
             <p className="text-spanishGray my-4 text-[0.95rem]">{features.split('\n')[0]}</p>
             <p className="text-spanishGray text-[0.95rem]">{features.split('\n')[2]}</p>
          </div>
