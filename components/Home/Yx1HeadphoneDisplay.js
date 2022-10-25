@@ -7,7 +7,7 @@ const Yx1HeadphoneDisplay = ({ yx1Headphones }) => {
 
    const customStyle = {
       button:
-         'bg-none text-sectionBlack font-bold border-[2px] border-sectionBlack ml-5 md:ml-16 hover:bg-sectionBlack hover:text-white',
+         'bg-none text-sectionBlack font-bold border-[2px] border-sectionBlack ml-5 md:ml-16 hover:bg-sectionBlack hover:text-white sm:w-40',
    }
 
    return (
