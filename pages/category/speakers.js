@@ -44,7 +44,7 @@ const Speakers = ({ header, footer, menuWidgetProduct, posterCard, speakersProdu
    const { navigation } = header
 
    return (
-      <Layout header={header} footer={footer} headerName={navigation[2].name}>
+      <Layout header={header} footer={footer} headerName={navigation[2].name} hamburgerMenu={menuWidgetProduct}>
          <ProductDisplay products={speakersProduct} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />

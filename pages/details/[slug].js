@@ -67,7 +67,7 @@ const ProductDetails = ({ header, footer, menuWidgetProduct, posterCard, product
    const { fields: productDetail } = productDetails.find((product) => product.fields.slug === slug)
 
    return (
-      <Layout header={header} footer={footer} detailsPage={true}>
+      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
          <DisplayProductDetails productDetails={productDetail} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />
