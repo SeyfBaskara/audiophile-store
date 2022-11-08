@@ -2,9 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 import ShowImage from '../ShowImages/ShowImage'
 
-const MenuWidget = ({ menuWidgetProduct }) => {
+const MenuWidget = ({ menuWidgetProduct, customStyle }) => {
    return (
-      <section className="my-28 mt-40 md:mt-40">
+      <section className={`my-28 ${customStyle ? customStyle : 'mt-40'} md:mt-40`}>
          <ul className="flex flex-col gap-24 sm:flex-row sm:gap-2 md:justify-between">
             {menuWidgetProduct
                .sort((a, b) => a.fields.order - b.fields.order)

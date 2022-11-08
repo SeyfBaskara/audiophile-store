@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
 
-const Layout = ({ children, header, footer, headerName, detailsPage }) => {
+const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu }) => {
    return (
       <>
          <Head>
@@ -13,7 +13,7 @@ const Layout = ({ children, header, footer, headerName, detailsPage }) => {
             <title>page title</title>
          </Head>
 
-         <Header header={header} headerName={headerName} detailsPage={detailsPage} />
+         <Header header={header} headerName={headerName} detailsPage={detailsPage} hamburgerMenu={hamburgerMenu} />
          <main className="px-6 lg:px-24">{children}</main>
          <Footer footer={footer} />
       </>
