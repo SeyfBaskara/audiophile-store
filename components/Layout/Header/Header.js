@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
+import Router, { useRouter } from 'next/router'
 import Image from 'next/image'
 import ThumbnailHeader from './ThumbnailHeader'
 import Nav from '../Nav'
@@ -11,17 +12,32 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
    const { showLightBox, setShowLightBox } = useContextData()
    const { navigation, thumbnail } = header
    const size = useWindowSize()
+   const router = useRouter()
 
    const customStyle = {
       navBar: 'flex gap-6',
       hamburgerMenu: 'mt-24 md:mt-24 sm:my-16',
    }
 
+   const hide = useCallback(() => {
+      setIsHamburgerMenu(false)
+      setShowLightBox(false)
+   }, [setIsHamburgerMenu, setShowLightBox])
+
+   useEffect(() => {
+      if (size.width <= 976) {
+         router.events.on('routeChangeStart', hide)
+
+         return () => router.events.off('routeChangeStart', hide)
+      }
+   }, [hide, router.events, size])
+
    useEffect(() => {
       if (size.width >= 976) {
          setIsHamburgerMenu(false)
+         setShowLightBox(false)
       }
-   }, [isHamburgerMenu, size.width])
+   }, [isHamburgerMenu, setShowLightBox, size.width])
 
    const handleHamburgerMenu = () => {
       setIsHamburgerMenu(!isHamburgerMenu)
@@ -47,7 +63,13 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                      onClick={handleHamburgerMenu}
                   />
                )}
-               <Image src="/images/logo.svg" alt="website logo" width={143} height={25} />
+               <Image
+                  src="/images/logo.svg"
+                  alt="website logo"
+                  width={143}
+                  height={25}
+                  onClick={() => router.push('/home')}
+               />
             </div>
             <div>
                <Image src="/images/icon-cart.svg" alt="cart icon" width={23} height={20} />
@@ -63,7 +85,7 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
             <ThumbnailHeader thumbnail={thumbnail} />
          )}
          {isHamburgerMenu && (
-            <div className="bg-white absolute top-20 w-full z-10 px-6">
+            <div className="bg-white absolute top-20 w-full z-50 px-6 rounded-b-lg">
                <MenuWidget menuWidgetProduct={hamburgerMenu} customStyle={customStyle.hamburgerMenu} />
             </div>
          )}

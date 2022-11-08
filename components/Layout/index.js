@@ -2,6 +2,7 @@ import Head from 'next/head'
 import React from 'react'
 import Header from './Header/Header'
 import Footer from './Footer/Footer'
+import LightBox from './LightBox'
 
 const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu }) => {
    return (
@@ -15,6 +16,7 @@ const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMe
 
          <Header header={header} headerName={headerName} detailsPage={detailsPage} hamburgerMenu={hamburgerMenu} />
          <main className="px-6 lg:px-24">{children}</main>
+         <LightBox />
          <Footer footer={footer} />
       </>
    )
