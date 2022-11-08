@@ -42,7 +42,7 @@ export async function getStaticProps() {
 
 const Home = ({ header, footer, menuWidgetProduct, posterCard, displayGridContent }) => {
    return (
-      <Layout header={header} footer={footer}>
+      <Layout header={header} footer={footer} hamburgerMenu={menuWidgetProduct}>
          <>
             <MenuWidget menuWidgetProduct={menuWidgetProduct} />
             <HomeDisplayGrid displayGridContent={displayGridContent} />

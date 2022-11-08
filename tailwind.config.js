@@ -31,6 +31,7 @@ module.exports = {
             hoverOrange: '#fbaf85',
             spanishGray: '#979797',
             borderWhite: '#D8D8D8',
+            lightBox: 'rgba(0, 0, 0, 0.2)',
          },
          height: {
             128: '32rem',
