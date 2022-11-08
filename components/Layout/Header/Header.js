@@ -60,6 +60,7 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                      alt="hamburger menu icon"
                      width={16}
                      height={15}
+                     className="cursor-pointer"
                      onClick={handleHamburgerMenu}
                   />
                )}
@@ -68,11 +69,12 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                   alt="website logo"
                   width={143}
                   height={25}
+                  className="cursor-pointer"
                   onClick={() => router.push('/home')}
                />
             </div>
             <div>
-               <Image src="/images/icon-cart.svg" alt="cart icon" width={23} height={20} />
+               <Image src="/images/icon-cart.svg" alt="cart icon" width={23} height={20} className="cursor-pointer" />
             </div>
          </section>
          {headerName ? (
