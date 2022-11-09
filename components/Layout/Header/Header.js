@@ -5,11 +5,14 @@ import ThumbnailHeader from './ThumbnailHeader'
 import Nav from '../Nav'
 import { useWindowSize } from '../../Hooks/UseWindowSize'
 import { useThemeContext } from '../../../context/ThemeContext'
+import { useShoppingContext } from '../../../context/ShoppingCartContext'
 import MenuWidget from '../../Widgets/MenuWidget'
+import Cart from '../../Cart/Cart'
 
 const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
    const [isHamburgerMenu, setIsHamburgerMenu] = useState(false)
    const { showLightBox, setShowLightBox } = useThemeContext()
+   const { isCartOpen, setIsCartOpen } = useShoppingContext()
    const { navigation, thumbnail } = header
    const size = useWindowSize()
    const router = useRouter()
@@ -44,6 +47,11 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
       setShowLightBox(!showLightBox)
    }
 
+   const handleCartItems = () => {
+      setIsCartOpen(!isCartOpen)
+      setShowLightBox(!showLightBox)
+   }
+
    return (
       <header className="bg-sectionBlack">
          <section
@@ -74,7 +82,14 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                />
             </div>
             <div>
-               <Image src="/images/icon-cart.svg" alt="cart icon" width={23} height={20} className="cursor-pointer" />
+               <Image
+                  src="/images/icon-cart.svg"
+                  alt="cart icon"
+                  width={23}
+                  height={20}
+                  className="cursor-pointer"
+                  onClick={handleCartItems}
+               />
             </div>
          </section>
          {headerName ? (
@@ -91,6 +106,7 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                <MenuWidget menuWidgetProduct={hamburgerMenu} customStyle={customStyle.hamburgerMenu} />
             </div>
          )}
+         {isCartOpen && <Cart />}
       </header>
    )
 }

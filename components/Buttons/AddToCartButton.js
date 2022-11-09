@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useShoppingContext } from '../../context/ShoppingCartContext'
 
-const AddToCartButton = ({ customStyle, productName }) => {
+const AddToCartButton = ({ customStyle, objectField, price }) => {
+   const { productName, cartImage } = objectField
    const [quantity, setQuantity] = useState(1)
    const { addItemToCart } = useShoppingContext()
 
@@ -18,7 +19,7 @@ const AddToCartButton = ({ customStyle, productName }) => {
          </div>
          <button
             className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`}
-            onClick={() => addItemToCart(productName, quantity)}
+            onClick={() => addItemToCart(productName, price, quantity, cartImage)}
          >
             ADD TO CART
          </button>
@@ -27,3 +28,9 @@ const AddToCartButton = ({ customStyle, productName }) => {
 }
 
 export default AddToCartButton
+
+/**
+ *NOTE
+ *
+ * should notify when items add to cart below bottons
+ */

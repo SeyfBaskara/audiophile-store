@@ -43,7 +43,7 @@ const Product = ({ objectField, price, details }) => {
                </p>
                {details && <p className="text-[1.3rem] font-semibold">{formatCurrency(price)}</p>}
                {details ? (
-                  <AddToCartButton customStyle={customStyle.button} productName={productName} />
+                  <AddToCartButton customStyle={customStyle.button} objectField={objectField} price={price} />
                ) : (
                   <SeeProductButton customStyle={customStyle.button} slug={slug} />
                )}
