@@ -1,24 +1,18 @@
-import React, { useState, createContext, useContext, Dispatch, SetStateAction } from 'react'
+import React, { createContext } from 'react'
+import ThemeProvider from './ThemeContext'
+import ShoppingCartProvider from './ShoppingCartContext'
 
-const initicalContext = {
-   showLightBox: false,
-}
-
-const AppContext = createContext(initicalContext)
+const AppContext = createContext()
 
 const AppProvider = ({ children }) => {
-   const [showLightBox, setShowLightBox] = useState(initicalContext.showLightBox)
-
-   const value = {
-      showLightBox,
-      setShowLightBox,
-   }
+   const value = {}
    return (
-      <>
-         <AppContext.Provider value={value}>{children}</AppContext.Provider>
-      </>
+      <ThemeProvider>
+         <ShoppingCartProvider>
+            <AppContext.Provider value={value}>{children}</AppContext.Provider>
+         </ShoppingCartProvider>
+      </ThemeProvider>
    )
 }
 
-export const useContextData = () => useContext(AppContext)
 export default AppProvider

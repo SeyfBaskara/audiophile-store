@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useContextData } from '../../context/AppContext'
+import { useThemeContext } from '../../context/ThemeContext'
 
 const LightBox = () => {
    const [scrollY, setScrollY] = useState(0)
-   const { showLightBox } = useContextData()
+   const { showLightBox } = useThemeContext()
 
    useEffect(() => {
       const handleScroll = () => {

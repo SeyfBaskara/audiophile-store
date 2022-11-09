@@ -4,12 +4,12 @@ import Image from 'next/image'
 import ThumbnailHeader from './ThumbnailHeader'
 import Nav from '../Nav'
 import { useWindowSize } from '../../Hooks/UseWindowSize'
-import { useContextData } from '../../../context/AppContext'
+import { useThemeContext } from '../../../context/ThemeContext'
 import MenuWidget from '../../Widgets/MenuWidget'
 
 const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
    const [isHamburgerMenu, setIsHamburgerMenu] = useState(false)
-   const { showLightBox, setShowLightBox } = useContextData()
+   const { showLightBox, setShowLightBox } = useThemeContext()
    const { navigation, thumbnail } = header
    const size = useWindowSize()
    const router = useRouter()
