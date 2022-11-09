@@ -19,11 +19,15 @@ const Cart = () => {
             </button>
          </div>
          <ul className="flex flex-col gap-5 my-8">
-            {cartItems?.map((item, index) => (
-               <li key={index}>
-                  <CartItem item={item} />
-               </li>
-            ))}
+            {cartItems.length !== 0 ? (
+               cartItems?.map((item, index) => (
+                  <li key={index}>
+                     <CartItem item={item} />
+                  </li>
+               ))
+            ) : (
+               <p className="text-spanishGray text-[1.2rem] text-center tracking-wider">Cart is empty</p>
+            )}
          </ul>
          <div className="flex justify-between items-center my-6">
             <p className="text-spanishGray text-[1.2rem]">TOTAL</p>
@@ -39,6 +43,5 @@ export default Cart
 /**
  * NOTE
  *
- * should display empty cart description if no items in a cart
- * should remove single item in a cart by clicking top right corner closing icon
+ * should remove single item in a cart by clicking top right corner closing icon optinal
  */
