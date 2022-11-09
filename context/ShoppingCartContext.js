@@ -82,11 +82,3 @@ const ShoppingCartProvider = ({ children }) => {
 
 export const useShoppingContext = () => useContext(ShoppingCartContext)
 export default ShoppingCartProvider
-
-/**
- * get cart item's quantity
- * increase item quantity in cart
- * decrease item quactity in cart
- * remove item in cart
- * remove all items in cart
- */
