@@ -4,7 +4,18 @@ import { useShoppingContext } from '../../context/ShoppingCartContext'
 const AddToCartButton = ({ customStyle, objectField, price }) => {
    const { productName, cartImage } = objectField
    const [quantity, setQuantity] = useState(1)
+   const [hasClicked, setHasClicked] = useState(false)
    const { addItemToCart } = useShoppingContext()
+
+   const handleAddToCart = () => {
+      addItemToCart(productName, price, quantity, cartImage)
+      setHasClicked(true)
+
+      setTimeout(() => {
+         setHasClicked(false)
+         window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 400)
+   }
 
    return (
       <div className="flex items-center gap-5">
@@ -17,20 +28,11 @@ const AddToCartButton = ({ customStyle, objectField, price }) => {
                +
             </button>
          </div>
-         <button
-            className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`}
-            onClick={() => addItemToCart(productName, price, quantity, cartImage)}
-         >
-            ADD TO CART
+         <button className={`${customStyle} text-[0.85rem] tracking-widest py-4 px-6 w-40`} onClick={handleAddToCart}>
+            {hasClicked ? <span>&#10004;</span> : 'ADD TO CART'}
          </button>
       </div>
    )
 }
 
 export default AddToCartButton
-
-/**
- *NOTE
- *
- * should notify when items add to cart below bottons
- */
