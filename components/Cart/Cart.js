@@ -8,7 +8,7 @@ const Cart = () => {
    const { cartItems, cartQuantity, removeAllFromCart, grandTotal } = useShoppingContext()
 
    return (
-      <section className="bg-white absolute top-28 right-3 w-[22rem] z-50 px-5 py-8 rounded-lg">
+      <section className="bg-white absolute top-28 right-3 w-[22rem] z-50 px-5 py-8 rounded-lg sm:w-[23rem] lg:right-24">
          <div className="flex justify-between items-center">
             <h1 className="font-semibold text-[1.3rem] tracking-widest">{`CART (${cartQuantity})`}</h1>
             <button
