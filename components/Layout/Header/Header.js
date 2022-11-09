@@ -12,7 +12,7 @@ import Cart from '../../Cart/Cart'
 const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
    const [isHamburgerMenu, setIsHamburgerMenu] = useState(false)
    const { showLightBox, setShowLightBox } = useThemeContext()
-   const { isCartOpen, setIsCartOpen } = useShoppingContext()
+   const { isCartOpen, setIsCartOpen, cartQuantity } = useShoppingContext()
    const { navigation, thumbnail } = header
    const size = useWindowSize()
    const router = useRouter()
@@ -81,15 +81,11 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
                   onClick={() => router.push('/home')}
                />
             </div>
-            <div>
-               <Image
-                  src="/images/icon-cart.svg"
-                  alt="cart icon"
-                  width={23}
-                  height={20}
-                  className="cursor-pointer"
-                  onClick={handleCartItems}
-               />
+            <div className="relative cursor-pointer" onClick={handleCartItems}>
+               <Image src="/images/icon-cart.svg" alt="cart icon" width={25} height={22} />
+               <p className="text-peruOrange font-bold text-xl2 absolute -top-5 left-2 ">
+                  {cartQuantity !== 0 ? cartQuantity : ''}
+               </p>
             </div>
          </section>
          {headerName ? (
