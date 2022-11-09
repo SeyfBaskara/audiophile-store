@@ -19,9 +19,3 @@ const ShowImage = ({ images, priority }) => {
 }
 
 export default ShowImage
-
-/**
- * should display image according screen size
- * should layout fill image
- *
- */

@@ -1,12 +1,17 @@
 const selectImageBySize = (size, imageArr) => {
    let imageField
+   const isArray = Array.isArray(imageArr)
 
-   if (size.width < 480) {
+   if (!isArray) {
+      imageField = imageArr.fields
+   } else if (size.width < 480 && isArray) {
       imageField = imageArr[0].fields
-   } else if (size.width >= 480 && size.width < 768) {
+   } else if (size.width >= 480 && size.width < 768 && isArray) {
       imageField = imageArr[1].fields
    } else {
-      imageField = imageArr[2].fields
+      if (isArray) {
+         imageField = imageArr[2].fields
+      }
    }
 
    return imageField
