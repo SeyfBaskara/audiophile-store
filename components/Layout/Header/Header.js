@@ -25,31 +25,40 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
    const hide = useCallback(() => {
       setIsHamburgerMenu(false)
       setShowLightBox(false)
-   }, [setIsHamburgerMenu, setShowLightBox])
+      setIsCartOpen(false)
+   }, [setIsHamburgerMenu, setShowLightBox, setIsCartOpen])
 
    useEffect(() => {
-      if (size.width <= 976) {
-         router.events.on('routeChangeStart', hide)
+      router.events.on('routeChangeStart', hide)
 
-         return () => router.events.off('routeChangeStart', hide)
-      }
+      return () => router.events.off('routeChangeStart', hide)
    }, [hide, router.events, size])
 
    useEffect(() => {
       if (size.width >= 976) {
          setIsHamburgerMenu(false)
-         setShowLightBox(false)
+         if (!isCartOpen) {
+            setShowLightBox(false)
+         }
       }
-   }, [isHamburgerMenu, setShowLightBox, size.width])
+   }, [isHamburgerMenu, setShowLightBox, size.width, isCartOpen])
 
    const handleHamburgerMenu = () => {
       setIsHamburgerMenu(!isHamburgerMenu)
       setShowLightBox(!showLightBox)
+      if (isCartOpen) {
+         setIsCartOpen(false)
+         setShowLightBox(true)
+      }
    }
 
    const handleCartItems = () => {
       setIsCartOpen(!isCartOpen)
       setShowLightBox(!showLightBox)
+      setIsHamburgerMenu(false)
+      if (isHamburgerMenu) {
+         setShowLightBox(true)
+      }
    }
 
    return (
