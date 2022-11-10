@@ -1,17 +1,21 @@
 import React, { useState, createContext, useContext } from 'react'
 
-const initicalContext = {
+const initialContext = {
    showLightBox: false,
+   pathName: '',
 }
 
-const ThemeContext = createContext(initicalContext)
+const ThemeContext = createContext(initialContext)
 
 const ThemeProvider = ({ children }) => {
-   const [showLightBox, setShowLightBox] = useState(initicalContext.showLightBox)
+   const [showLightBox, setShowLightBox] = useState(initialContext.showLightBox)
+   const [pathName, setPathName] = useState(initialContext.pathName)
 
    const value = {
       showLightBox,
       setShowLightBox,
+      pathName,
+      setPathName,
    }
    return (
       <>

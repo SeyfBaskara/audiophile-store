@@ -1,6 +1,7 @@
 import React from 'react'
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
+import Forms from '../components/Checkout/Forms/Forms'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -27,7 +28,7 @@ export async function getStaticProps() {
 const Checkout = ({ header, footer, menuWidgetProduct }) => {
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
-         <p>Checkout page</p>
+         <Forms />
       </Layout>
    )
 }

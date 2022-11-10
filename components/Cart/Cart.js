@@ -33,7 +33,7 @@ const Cart = () => {
             <p className="text-spanishGray text-[1.2rem]">TOTAL</p>
             <p className="text-[1.3rem] font-semibold">{formatCurrency(grandTotal)}</p>
          </div>
-         <CheckOutButton />
+         <CheckOutButton isCartEmpty={cartItems.length === 0} />
       </section>
    )
 }
