@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { useWindowSize } from '../Hooks/UseWindowSize'
+import { useWindowSize } from '../../Hooks/UseWindowSize'
 import selectImageBySize from '../../utils/selectImageBySize'
 
 const ShowImage = ({ images, priority }) => {

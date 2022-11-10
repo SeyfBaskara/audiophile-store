@@ -39,9 +39,3 @@ const Cart = () => {
 }
 
 export default Cart
-
-/**
- * NOTE
- *
- * should remove single item in a cart by clicking top right corner closing icon optinal
- */
