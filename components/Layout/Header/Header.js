@@ -92,8 +92,8 @@ const Header = ({ header, headerName, detailsPage, hamburgerMenu }) => {
             </div>
             <div className="relative cursor-pointer" onClick={handleCartItems}>
                <Image src="/images/icon-cart.svg" alt="cart icon" width={25} height={22} />
-               <p className="text-peruOrange font-bold text-xl2 absolute -top-5 left-2 ">
-                  {cartQuantity !== 0 ? cartQuantity : ''}
+               <p className="text-peruOrange font-bold text-xl2 absolute -top-5 left-2">
+                  {cartQuantity !== 0 && cartQuantity}
                </p>
             </div>
          </section>

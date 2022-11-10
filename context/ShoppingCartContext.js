@@ -1,12 +1,12 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react'
+import { useLocalStorage } from '../Hooks/UseLocalStorage'
 
-const initicalContext = []
-
-const ShoppingCartContext = createContext(initicalContext)
+const ShoppingCartContext = createContext([])
 
 const ShoppingCartProvider = ({ children }) => {
-   const [cartItems, setCartItems] = useState(initicalContext)
+   const [cartItems, setCartItems] = useLocalStorage('shopping-cart', [])
    const [isCartOpen, setIsCartOpen] = useState(false)
+   const [cartQuantity, setCartQuantity] = useState()
 
    const getItemQuantity = (productName) => {
       return cartItems.find((item) => item.productName === productName)?.quantity || 0
@@ -64,8 +64,12 @@ const ShoppingCartProvider = ({ children }) => {
    const removeAllFromCart = () => {
       setCartItems([])
    }
-   const cartQuantity = cartItems.reduce((quantity, item) => item.quantity + quantity, 0)
-   const grandTotal = cartItems.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
+
+   const grandTotal = cartItems?.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
+
+   useEffect(() => {
+      setCartQuantity(cartItems?.reduce((quantity, item) => item.quantity + quantity, 0))
+   }, [cartItems, setCartItems])
 
    const value = {
       isCartOpen,
