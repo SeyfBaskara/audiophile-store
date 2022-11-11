@@ -1,10 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { useThemeContext } from '../../../context/ThemeContext'
 
-const Forms = () => {
-   const { pathName } = useThemeContext()
-
+const index = ({ pathName }) => {
    return (
       <section>
          <Link href={`${pathName}`}>
@@ -17,7 +14,7 @@ const Forms = () => {
    )
 }
 
-export default Forms
+export default index
 
 /**
  * should go back button redirect correct page ✅

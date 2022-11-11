@@ -1,7 +1,8 @@
 import React from 'react'
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
-import Forms from '../components/Checkout/Forms/Forms'
+import Forms from '../components/Checkout/Forms/index'
+import { useThemeContext } from '../context/ThemeContext'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -26,9 +27,11 @@ export async function getStaticProps() {
 }
 
 const Checkout = ({ header, footer, menuWidgetProduct }) => {
+   const { pathName } = useThemeContext()
+
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
-         <Forms />
+         <Forms pathName={pathName} />
       </Layout>
    )
 }
