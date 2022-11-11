@@ -1,6 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import BillingDetailsInputs from './BillingDetailsInputs'
+import ShippingInfoInputs from './ShippingInfoInputs'
+
+const customStyle = {
+   title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
+   label: 'flex flex-col gap-1 text-sm font-semibold',
+   input: 'border-2 rounded-lg py-3 px-5 text-spanishGray text-[1.1rem] font-normal',
+}
 
 const Form = () => {
    const {
@@ -13,7 +20,8 @@ const Form = () => {
 
    return (
       <form onSubmit={handleSubmit(onSubmit)}>
-         <BillingDetailsInputs register={register} />
+         <BillingDetailsInputs register={register} style={customStyle} />
+         <ShippingInfoInputs register={register} style={customStyle} />
          <input type="submit" />
       </form>
    )
