@@ -4,7 +4,7 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import LightBox from './LightBox'
 
-const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu }) => {
+const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu, isCheckout }) => {
    return (
       <>
          <Head>
@@ -15,7 +15,7 @@ const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMe
          </Head>
 
          <Header header={header} headerName={headerName} detailsPage={detailsPage} hamburgerMenu={hamburgerMenu} />
-         <main className="px-6 lg:px-24">{children}</main>
+         <main className={`px-6 lg:px-24 ${isCheckout && 'bg-checkoutBg pb-10'} `}>{children}</main>
          <LightBox />
          <Footer footer={footer} />
       </>

@@ -3,7 +3,7 @@ import CartItem from '../../Cart/CartItem'
 
 const Summary = ({ cartItems }) => {
    return (
-      <section className="p-6 shadow-2xl my-5">
+      <section className="p-6 bg-white rounded-lg">
          <h1 className="text-xl2 font-semibold tracking-wider">SUMMARY</h1>
          <ul className="flex flex-col gap-5 my-7">
             {cartItems.length !== 0 &&
@@ -18,3 +18,11 @@ const Summary = ({ cartItems }) => {
 }
 
 export default Summary
+
+/**
+ * should display total price
+ * should calculate and display shipping cost
+ * should calculate vat and display vat
+ * should display grand total
+ * should display continue and pay button
+ */

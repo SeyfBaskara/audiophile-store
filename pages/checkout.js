@@ -33,7 +33,7 @@ const Checkout = ({ header, footer, menuWidgetProduct }) => {
    const { cartItems } = useShoppingContext()
 
    return (
-      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
+      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} isCheckout={true}>
          <Forms pathName={pathName} />
          <Summary cartItems={cartItems} />
       </Layout>
