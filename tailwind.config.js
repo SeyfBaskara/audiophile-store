@@ -25,6 +25,7 @@ module.exports = {
             imgBlack: '#1f1f1f',
             hoverBlack: '#4C4C4C',
             white: '#FFFFFF',
+            checkoutBg: '#F2F2F2',
             fleshWhite: '#F1F1F1',
             lotionWhite: '#FAFAFA',
             peruOrange: '#D87D4A',
