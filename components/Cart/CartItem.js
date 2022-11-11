@@ -3,7 +3,7 @@ import { formatCurrency } from '../../utils/formatCurrency'
 import ShowImage from '../ShowImages/ShowImage'
 import { useShoppingContext } from '../../context/ShoppingCartContext'
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, isSummary }) => {
    const { productName, image, price, quantity } = item
    const { increaseCartQuantity, decreaseCartQuantity } = useShoppingContext()
 
@@ -18,15 +18,19 @@ const CartItem = ({ item }) => {
                <p className="text-[1.1rem] text-spanishGray font-semibold">{formatCurrency(price)}</p>
             </div>
          </div>
-         <div className="flex items-center gap-2 bg-fleshWhite ">
-            <button className="py-2 px-3 text-spanishGray" onClick={() => decreaseCartQuantity(productName)}>
-               -
-            </button>
-            <p className="w-2 text-center">{quantity}</p>
-            <button className="py-2 px-3 text-spanishGray" onClick={() => increaseCartQuantity(productName)}>
-               +
-            </button>
-         </div>
+         {!isSummary ? (
+            <div className="flex items-center gap-2 bg-fleshWhite ">
+               <button className="py-2 px-3 text-spanishGray" onClick={() => decreaseCartQuantity(productName)}>
+                  -
+               </button>
+               <p className="w-2 text-center">{quantity}</p>
+               <button className="py-2 px-3 text-spanishGray" onClick={() => increaseCartQuantity(productName)}>
+                  +
+               </button>
+            </div>
+         ) : (
+            <p className="w-2 text-spanishGray text-[1.1rem] font-semibold">x{quantity}</p>
+         )}
       </section>
    )
 }

@@ -19,7 +19,7 @@ const index = ({ pathName }) => {
 export default index
 
 /**
- * should go back button redirect correct page ✅
- * should display all forms components
+ * FIXME
+ * should go back link only redirect pathname where user being redirected to checkout.
  *
  */

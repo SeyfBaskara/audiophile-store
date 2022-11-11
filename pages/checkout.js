@@ -2,7 +2,9 @@ import React from 'react'
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
 import Forms from '../components/Checkout/Forms/index'
+import Summary from '../components/Checkout/Summary/Summary'
 import { useThemeContext } from '../context/ThemeContext'
+import { useShoppingContext } from '../context/ShoppingCartContext'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -28,10 +30,12 @@ export async function getStaticProps() {
 
 const Checkout = ({ header, footer, menuWidgetProduct }) => {
    const { pathName } = useThemeContext()
+   const { cartItems } = useShoppingContext()
 
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
          <Forms pathName={pathName} />
+         <Summary cartItems={cartItems} />
       </Layout>
    )
 }
