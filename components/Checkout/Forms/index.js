@@ -17,9 +17,3 @@ const index = ({ pathName }) => {
 }
 
 export default index
-
-/**
- * FIXME
- * should go back link only redirect pathname where user being redirected to checkout.
- *
- */

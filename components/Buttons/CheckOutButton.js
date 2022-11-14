@@ -9,7 +9,9 @@ const CheckOutButton = ({ isCartEmpty }) => {
    const handleCheckoutOnClick = () => {
       if (!isCartEmpty) {
          router.push('/checkout')
-         setPathName(router.asPath)
+         if (router.asPath !== '/checkout') {
+            setPathName(router.asPath)
+         }
       }
    }
 
