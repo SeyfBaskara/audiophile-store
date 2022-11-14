@@ -5,7 +5,7 @@ import { useShoppingContext } from '../../context/ShoppingCartContext'
 import CartItem from './CartItem'
 
 const Cart = () => {
-   const { cartItems, cartQuantity, removeAllFromCart, grandTotal } = useShoppingContext()
+   const { cartItems, cartQuantity, removeAllFromCart, totalPrice } = useShoppingContext()
 
    return (
       <section className="bg-white absolute top-28 right-3 w-[22rem] z-50 px-5 py-8 rounded-lg sm:w-[23rem] lg:right-24">
@@ -31,7 +31,7 @@ const Cart = () => {
          </ul>
          <div className="flex justify-between items-center my-6">
             <p className="text-spanishGray text-[1.2rem]">TOTAL</p>
-            <p className="text-[1.3rem] font-semibold">{formatCurrency(grandTotal)}</p>
+            <p className="text-[1.3rem] font-semibold">{formatCurrency(totalPrice)}</p>
          </div>
          <CheckOutButton isCartEmpty={cartItems.length === 0} />
       </section>
