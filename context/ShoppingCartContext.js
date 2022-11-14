@@ -65,7 +65,10 @@ const ShoppingCartProvider = ({ children }) => {
       setCartItems([])
    }
 
-   const grandTotal = cartItems?.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
+   const totalPrice = cartItems?.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
+   const shippingCost = 50
+   const VAT = totalPrice * 0.2
+   const grandTotal = totalPrice + shippingCost
 
    useEffect(() => {
       setCartQuantity(cartItems?.reduce((quantity, item) => item.quantity + quantity, 0))
@@ -82,6 +85,9 @@ const ShoppingCartProvider = ({ children }) => {
       removeFromCart,
       removeAllFromCart,
       cartQuantity,
+      totalPrice,
+      shippingCost,
+      VAT,
       grandTotal,
    }
    return (
