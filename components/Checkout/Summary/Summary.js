@@ -2,6 +2,7 @@ import React from 'react'
 import CartItem from '../../Cart/CartItem'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import ContinueAndPayButton from '../../Buttons/ContinueAndPayButton'
 
 const style = {
    text: 'flex items-center justify-between text-spanishGray',
@@ -10,6 +11,10 @@ const style = {
 
 const Summary = () => {
    const { cartItems, totalPrice, shippingCost, vat, grandTotal } = useShoppingContext()
+
+   const handleContinueAndPay = () => {
+      console.log('continue and pay')
+   }
 
    return (
       <section className="p-6 bg-white rounded-lg">
@@ -32,10 +37,11 @@ const Summary = () => {
             <p className={`${style.text}`}>
                VAT(INCLUDED) <span className={`${style.span} text-black`}>{formatCurrency(vat)}</span>
             </p>
-            <p className={`${style.text} mt-5`}>
+            <p className={`${style.text} mt-5 mb-7`}>
                GRAND TOTAL <span className={`${style.span} text-peruOrange`}>{formatCurrency(grandTotal)}</span>
             </p>
          </div>
+         <ContinueAndPayButton handleContinueAndPay={handleContinueAndPay} />
       </section>
    )
 }
@@ -43,9 +49,11 @@ const Summary = () => {
 export default Summary
 
 /**
- * should display total price
- * should calculate and display shipping cost
- * should calculate vat and display vat
- * should display grand total
- * should display continue and pay button
+ * should display total price ✅
+ * should calculate and display shipping cost ✅
+ * should calculate vat and display vat ✅
+ * should display grand total ✅
+ * should display continue and pay button ✅
+ * should continue button check form validation
+ * should trigger form and if all fields are filled then receive form data
  */
