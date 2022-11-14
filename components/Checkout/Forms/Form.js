@@ -18,16 +18,15 @@ const Form = () => {
       formState: { errors },
    } = useForm()
    const onSubmit = (data) => {
-      console.log(data)
+      console.log('submitted')
       reset()
    }
 
    return (
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form id="hook-form" onSubmit={handleSubmit(onSubmit)}>
          <BillingDetailsInputs register={register} style={customStyle} />
          <ShippingInfoInputs register={register} style={customStyle} />
          <PaymentDetailsInputs register={register} style={customStyle} />
-         <input type="submit" />
       </form>
    )
 }
@@ -35,7 +34,7 @@ const Form = () => {
 export default Form
 
 /**
- * should not display submit button
- * should trigger submit when continue&pay button clicked
+ * should not display submit button ✅
+ * should trigger submit when continue&pay button clicked ✅
  * should save data in checkout context forms data
  */

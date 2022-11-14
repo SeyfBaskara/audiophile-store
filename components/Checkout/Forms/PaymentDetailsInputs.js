@@ -64,3 +64,10 @@ const PaymentDetailsInputs = ({ register, style }) => {
 }
 
 export default PaymentDetailsInputs
+
+/**
+ * FIXME
+ *
+ * should focus on payment method while form validation trigger
+ *
+ */

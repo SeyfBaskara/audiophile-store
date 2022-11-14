@@ -6,6 +6,8 @@ const ContinueAndPayButton = ({ handleContinueAndPay }) => {
          <button
             className={`text-[0.85rem] tracking-widest py-4 px-6 w-full bg-peruOrange text-white font-semibold hover:bg-hoverOrange cursor-pointer`}
             onClick={handleContinueAndPay}
+            type="submit"
+            form="hook-form"
          >
             CONTINUE & PAY
          </button>

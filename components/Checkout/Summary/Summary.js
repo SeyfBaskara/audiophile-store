@@ -12,9 +12,7 @@ const style = {
 const Summary = () => {
    const { cartItems, totalPrice, shippingCost, vat, grandTotal } = useShoppingContext()
 
-   const handleContinueAndPay = () => {
-      console.log('continue and pay')
-   }
+   const handleContinueAndPay = () => {}
 
    return (
       <section className="p-6 bg-white rounded-lg">
@@ -47,13 +45,3 @@ const Summary = () => {
 }
 
 export default Summary
-
-/**
- * should display total price ✅
- * should calculate and display shipping cost ✅
- * should calculate vat and display vat ✅
- * should display grand total ✅
- * should display continue and pay button ✅
- * should continue button check form validation
- * should trigger form and if all fields are filled then receive form data
- */
