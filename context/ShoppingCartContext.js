@@ -67,7 +67,7 @@ const ShoppingCartProvider = ({ children }) => {
 
    const totalPrice = cartItems?.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
    const shippingCost = 50
-   const VAT = totalPrice * 0.2
+   const vat = totalPrice * 0.2
    const grandTotal = totalPrice + shippingCost
 
    useEffect(() => {
@@ -87,7 +87,7 @@ const ShoppingCartProvider = ({ children }) => {
       cartQuantity,
       totalPrice,
       shippingCost,
-      VAT,
+      vat,
       grandTotal,
    }
    return (
