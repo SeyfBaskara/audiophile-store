@@ -11,25 +11,31 @@ const ShippingInfoInputs = ({ register, style }) => {
                <input className={`${style.input}`} type="text" {...register('yourAddress', { required: true })} />
             </label>
 
-            <label className={`${style.label}`} htmlFor="zip code">
-               ZIP Code
-               <input
-                  className={`${style.input}`}
-                  type="number"
-                  {...register('zipCode', {
-                     required: true,
-                  })}
-               />
-            </label>
+            <div className="md:flex md:gap-3">
+               <label className={`${style.label}`} htmlFor="zip code">
+                  ZIP Code
+                  <input
+                     className={`${style.input}`}
+                     type="number"
+                     {...register('zipCode', {
+                        required: true,
+                     })}
+                  />
+               </label>
 
-            <label className={`${style.label}`} htmlFor="city">
-               City
-               <input className={`${style.input}`} type="text" {...register('city', { required: true })} />
-            </label>
+               <label className={`${style.label}`} htmlFor="city">
+                  City
+                  <input className={`${style.input}`} type="text" {...register('city', { required: true })} />
+               </label>
+            </div>
 
             <label className={`${style.label}`} htmlFor="country">
                Country
-               <input className={`${style.input}`} type="text" {...register('country', { required: true })} />
+               <input
+                  className={`${style.input}  md:w-6/12`}
+                  type="text"
+                  {...register('country', { required: true })}
+               />
             </label>
          </div>
       </div>

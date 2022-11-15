@@ -6,28 +6,30 @@ const BillingDetailsInputs = ({ register, style }) => {
          <h1 className={`${style.title}`}>BILLING DETAILS</h1>
 
          <div className="flex flex-col gap-4">
-            <label className={`${style.label}`} htmlFor="name">
-               Name
-               <input className={`${style.input}`} type="text" {...register('name', { required: true })} />
-            </label>
+            <div className="md:flex md:gap-3">
+               <label className={`${style.label}`} htmlFor="name">
+                  Name
+                  <input className={`${style.input}`} type="text" {...register('name', { required: true })} />
+               </label>
 
-            <label className={`${style.label}`} htmlFor="email">
-               Email Address
-               <input
-                  className={`${style.input}`}
-                  type="email"
-                  {...register('email', {
-                     required: true,
-                     pattern: {
-                        value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-                     },
-                  })}
-               />
-            </label>
+               <label className={`${style.label}`} htmlFor="email">
+                  Email Address
+                  <input
+                     className={`${style.input}`}
+                     type="email"
+                     {...register('email', {
+                        required: true,
+                        pattern: {
+                           value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i,
+                        },
+                     })}
+                  />
+               </label>
+            </div>
 
             <label className={`${style.label}`} htmlFor="phone">
                Phone Number
-               <input className={`${style.input}`} type="tel" {...register('phone', { required: true })} />
+               <input className={`${style.input} md:w-6/12`} type="tel" {...register('phone', { required: true })} />
             </label>
          </div>
       </div>

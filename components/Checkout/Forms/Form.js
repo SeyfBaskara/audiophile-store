@@ -6,7 +6,7 @@ import ShippingInfoInputs from './ShippingInfoInputs'
 
 const customStyle = {
    title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
-   label: 'flex flex-col gap-2 text-sm font-semibold',
+   label: 'flex flex-col gap-2 text-sm font-semibold md:w-full',
    input: 'border-2 rounded-lg py-3 px-5 text-spanishGray text-[1.1rem] font-normal',
 }
 
