@@ -5,7 +5,7 @@ import Form from './Form'
 const index = ({ pathName }) => {
    return (
       <section className="mb-10 pt-5 lg:w-full">
-         <Link href={`${pathName}`}>
+         <Link href={`${pathName ? pathName : '/home'}`}>
             <a className="text-spanishGray">Go Back</a>
          </Link>
          <section className="p-6 mt-5 bg-white rounded-lg">
