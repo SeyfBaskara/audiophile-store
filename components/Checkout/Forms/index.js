@@ -4,7 +4,7 @@ import Form from './Form'
 
 const index = ({ pathName }) => {
    return (
-      <section className="mb-10 pt-5">
+      <section className="mb-10 pt-5 lg:w-full">
          <Link href={`${pathName}`}>
             <a className="text-spanishGray">Go Back</a>
          </Link>

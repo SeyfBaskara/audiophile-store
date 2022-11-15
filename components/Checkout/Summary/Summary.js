@@ -15,7 +15,7 @@ const Summary = () => {
    const handleContinueAndPay = () => {}
 
    return (
-      <section className="p-6 bg-white rounded-lg">
+      <section className="p-6 bg-white rounded-lg lg:w-6/12 lg:h-[50%] lg:mt-16">
          <h1 className="text-xl2 font-semibold tracking-wider">SUMMARY</h1>
          <ul className="flex flex-col gap-5 my-7">
             {cartItems.length !== 0 &&

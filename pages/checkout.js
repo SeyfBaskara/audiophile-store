@@ -1,8 +1,7 @@
 import React from 'react'
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
-import Forms from '../components/Checkout/Forms/index'
-import Summary from '../components/Checkout/Summary/Summary'
+import CheckoutContent from '../components/Checkout/index'
 import { useThemeContext } from '../context/ThemeContext'
 
 export async function getStaticProps() {
@@ -32,8 +31,9 @@ const Checkout = ({ header, footer, menuWidgetProduct }) => {
 
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} isCheckout={true}>
-         <Forms pathName={pathName} />
-         <Summary />
+         <>
+            <CheckoutContent pathName={pathName} />
+         </>
       </Layout>
    )
 }
