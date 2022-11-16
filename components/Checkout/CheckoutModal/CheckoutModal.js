@@ -3,9 +3,16 @@ import Image from 'next/image'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
 import CartItem from '../../Cart/CartItem'
 import { formatCurrency } from '../../../utils/formatCurrency'
+import BackToHomeButton from '../../Buttons/BackToHomeButton'
+import { useRouter } from 'next/router'
 
 const CheckoutModal = () => {
    const { cartItems, grandTotal } = useShoppingContext()
+   const router = useRouter()
+
+   const handleBackToHomeButton = () => {
+      router.push('/home')
+   }
 
    return (
       <section className="bg-white p-6 mt-10 rounded-md">
@@ -28,9 +35,10 @@ const CheckoutModal = () => {
                )}
             </ul>
             <p className="flex flex-col gap-4 bg-black text-spanishGray px-6 py-5 rounded-b-md">
-               GRAND TOTAL <span className="text-white">{formatCurrency(grandTotal)}</span>
+               GRAND TOTAL <span className="text-white text-[1.3rem] font-semibold">{formatCurrency(grandTotal)}</span>
             </p>
          </div>
+         <BackToHomeButton handleBackToHomeButton={handleBackToHomeButton} />
       </section>
    )
 }
