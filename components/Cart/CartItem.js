@@ -3,7 +3,7 @@ import { formatCurrency } from '../../utils/formatCurrency'
 import ShowImage from '../ShowImages/ShowImage'
 import { useShoppingContext } from '../../context/ShoppingCartContext'
 
-const CartItem = ({ item, isSummary }) => {
+const CartItem = ({ item, isFromCheckout }) => {
    const { productName, image, price, quantity } = item
    const { increaseCartQuantity, decreaseCartQuantity } = useShoppingContext()
 
@@ -18,7 +18,7 @@ const CartItem = ({ item, isSummary }) => {
                <p className="text-[1.1rem] text-spanishGray font-semibold">{formatCurrency(price)}</p>
             </div>
          </div>
-         {!isSummary ? (
+         {!isFromCheckout ? (
             <div className="flex items-center gap-2 bg-fleshWhite ">
                <button className="py-2 px-3 text-spanishGray" onClick={() => decreaseCartQuantity(productName)}>
                   -

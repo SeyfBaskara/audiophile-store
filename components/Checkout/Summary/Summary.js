@@ -21,7 +21,7 @@ const Summary = () => {
             {cartItems.length !== 0 &&
                cartItems?.map((item, index) => (
                   <li key={index}>
-                     <CartItem item={item} isSummary={true} />
+                     <CartItem item={item} isFromCheckout={true} />
                   </li>
                ))}
          </ul>
