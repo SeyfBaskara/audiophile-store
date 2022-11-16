@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import BillingDetailsInputs from './BillingDetailsInputs'
 import PaymentDetailsInputs from './PaymentDetailsInputs'
 import ShippingInfoInputs from './ShippingInfoInputs'
+import { useThemeContext } from '../../../context/ThemeContext'
 
 const customStyle = {
    title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
@@ -11,6 +12,8 @@ const customStyle = {
 }
 
 const Form = () => {
+   const { setShowLightBox, setIsModalOpen } = useThemeContext()
+
    const {
       register,
       handleSubmit,
@@ -19,6 +22,8 @@ const Form = () => {
    } = useForm()
    const onSubmit = (data) => {
       console.log('submitted')
+      setIsModalOpen(true)
+      setShowLightBox(true)
       reset()
    }
 

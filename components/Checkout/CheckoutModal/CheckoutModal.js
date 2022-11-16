@@ -7,9 +7,9 @@ import { formatCurrency } from '../../../utils/formatCurrency'
 import BackToHomeButton from '../../Buttons/BackToHomeButton'
 import { useRouter } from 'next/router'
 
-const CheckoutModal = ({ setIsModalOpen }) => {
+const CheckoutModal = () => {
    const { cartItems, grandTotal } = useShoppingContext()
-   const { setShowLightBox } = useThemeContext()
+   const { setShowLightBox, setIsModalOpen } = useThemeContext()
    const router = useRouter()
 
    const handleBackToHomeButton = () => {

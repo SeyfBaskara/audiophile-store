@@ -1,7 +1,6 @@
 import React from 'react'
 import CartItem from '../../Cart/CartItem'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
-import { useThemeContext } from '../../../context/ThemeContext'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import ContinueAndPayButton from '../../Buttons/ContinueAndPayButton'
 
@@ -10,14 +9,10 @@ const style = {
    span: 'font-semibold text-[1.1rem]',
 }
 
-const Summary = ({ setIsModalOpen }) => {
+const Summary = () => {
    const { cartItems, totalPrice, shippingCost, vat, grandTotal } = useShoppingContext()
-   const { setShowLightBox } = useThemeContext()
 
-   const handleContinueAndPay = () => {
-      setIsModalOpen(true)
-      setShowLightBox(true)
-   }
+   const handleContinueAndPay = () => {}
 
    return (
       <section className="p-6 bg-white rounded-lg lg:w-6/12 lg:h-[50%] lg:mt-16">
