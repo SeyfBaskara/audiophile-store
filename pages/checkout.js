@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
 import CheckoutContent from '../components/Checkout/index'
 import { useThemeContext } from '../context/ThemeContext'
+import CheckoutModal from '../components/Checkout/CheckoutModal/CheckoutModal'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -27,12 +28,14 @@ export async function getStaticProps() {
 }
 
 const Checkout = ({ header, footer, menuWidgetProduct }) => {
+   const [isModalOpen, setIsModalOpen] = useState(false)
    const { pathName } = useThemeContext()
 
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} isCheckout={true}>
          <>
-            <CheckoutContent pathName={pathName} />
+            <CheckoutContent pathName={pathName} setIsModalOpen={setIsModalOpen} />
+            {isModalOpen && <CheckoutModal setIsModalOpen={setIsModalOpen} />}
          </>
       </Layout>
    )

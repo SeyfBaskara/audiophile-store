@@ -1,21 +1,25 @@
 import React from 'react'
 import Image from 'next/image'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
+import { useThemeContext } from '../../../context/ThemeContext'
 import CartItem from '../../Cart/CartItem'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import BackToHomeButton from '../../Buttons/BackToHomeButton'
 import { useRouter } from 'next/router'
 
-const CheckoutModal = () => {
+const CheckoutModal = ({ setIsModalOpen }) => {
    const { cartItems, grandTotal } = useShoppingContext()
+   const { setShowLightBox } = useThemeContext()
    const router = useRouter()
 
    const handleBackToHomeButton = () => {
       router.push('/home')
+      setShowLightBox(false)
+      setIsModalOpen(false)
    }
 
    return (
-      <section className="bg-white p-6 mt-10 rounded-md">
+      <section className="bg-white p-6 mt-10 rounded-md w-11/12 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
          <div>
             <Image src="/icon-order-confirmation.svg" alt="order confirmation icon" width={64} height={64} />
             <h1 className="text-xl3 font-semibold tracking-wider leading-9 my-5">THANK YOU FOR YOUR ORDER</h1>
@@ -44,9 +48,3 @@ const CheckoutModal = () => {
 }
 
 export default CheckoutModal
-
-/**
- * should display cart items which purchased ✅
- * should display grand total ✅
- * should display back to home button and redirect to home page
- */
