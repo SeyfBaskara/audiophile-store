@@ -26,7 +26,13 @@ const LightBox = () => {
          {showLightBox && (
             <div
                className={`fixed w-full h-full left-0 ${
-                  isCartOpen && scrollY >= 13 ? 'top-0' : scrollY >= 100 ? 'top-0' : 'top-20'
+                  isCartOpen && scrollY >= 13
+                     ? 'top-0'
+                     : isCartOpen && scrollY >= 100
+                     ? 'top-0'
+                     : !isCartOpen
+                     ? 'top-0'
+                     : 'top-20'
                }
                bg-black opacity-30 z-40`}
             ></div>
