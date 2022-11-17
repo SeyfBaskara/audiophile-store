@@ -1,6 +1,7 @@
 import React, { createContext } from 'react'
 import ThemeProvider from './ThemeContext'
 import ShoppingCartProvider from './ShoppingCartContext'
+import PaymentProvider from './PaymentContext'
 
 const AppContext = createContext()
 
@@ -9,7 +10,9 @@ const AppProvider = ({ children }) => {
    return (
       <ThemeProvider>
          <ShoppingCartProvider>
-            <AppContext.Provider value={value}>{children}</AppContext.Provider>
+            <PaymentProvider>
+               <AppContext.Provider value={value}>{children}</AppContext.Provider>
+            </PaymentProvider>
          </ShoppingCartProvider>
       </ThemeProvider>
    )

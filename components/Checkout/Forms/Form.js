@@ -21,7 +21,6 @@ const Form = () => {
       formState: { errors },
    } = useForm()
    const onSubmit = (data) => {
-      console.log('submitted')
       setIsModalOpen(true)
       setShowLightBox(true)
       reset()
