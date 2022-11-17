@@ -4,6 +4,7 @@ import BillingDetailsInputs from './BillingDetailsInputs'
 import PaymentDetailsInputs from './PaymentDetailsInputs'
 import ShippingInfoInputs from './ShippingInfoInputs'
 import { useThemeContext } from '../../../context/ThemeContext'
+import { usePaymentContext } from '../../../context/PaymentContext'
 
 const customStyle = {
    title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
@@ -13,6 +14,7 @@ const customStyle = {
 
 const Form = () => {
    const { setShowLightBox, setIsModalOpen } = useThemeContext()
+   const { checkPaymentStatus } = usePaymentContext()
 
    const {
       register,
@@ -23,6 +25,7 @@ const Form = () => {
    const onSubmit = (data) => {
       setIsModalOpen(true)
       setShowLightBox(true)
+      checkPaymentStatus(data)
       reset()
    }
 

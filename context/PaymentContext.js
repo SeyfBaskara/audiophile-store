@@ -1,15 +1,30 @@
 import React, { useState, createContext, useContext } from 'react'
 
-const ThemeContext = createContext()
+const PaymentContext = createContext()
 
 const PaymentProvider = ({ children }) => {
-   const value = {}
+   const [isPaymentDone, setIsPaymentDone] = useState(false)
+
+   // mock check payment status
+   const checkPaymentStatus = (data) => {
+      if (data) {
+         setTimeout(() => {
+            setIsPaymentDone(true)
+         }, 3000)
+      }
+   }
+
+   const value = {
+      isPaymentDone,
+      setIsPaymentDone,
+      checkPaymentStatus,
+   }
    return (
       <>
-         <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+         <PaymentContext.Provider value={value}>{children}</PaymentContext.Provider>
       </>
    )
 }
 
-export const useThemeContext = () => useContext(ThemeContext)
+export const usePaymentContext = () => useContext(PaymentContext)
 export default PaymentProvider
