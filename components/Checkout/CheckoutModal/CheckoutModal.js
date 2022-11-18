@@ -6,6 +6,7 @@ import { usePaymentContext } from '../../../context/PaymentContext'
 import CartItem from '../../Cart/CartItem'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import BackToHomeButton from '../../Buttons/BackToHomeButton'
+import Spinner from './Spinner'
 import { useRouter } from 'next/router'
 
 const CheckoutModal = () => {
@@ -27,7 +28,10 @@ const CheckoutModal = () => {
                            sm:w-[23rem] md:w-[33rem]"
       >
          {!isPaymentDone ? (
-            <p>checking payment status</p>
+            <div>
+               <p>checking payment status</p>
+               <Spinner />
+            </div>
          ) : (
             <>
                <div>
@@ -63,3 +67,8 @@ const CheckoutModal = () => {
 }
 
 export default CheckoutModal
+
+/**
+ * FIXME
+ * wrap content in div
+ */
