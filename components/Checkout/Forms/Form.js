@@ -43,9 +43,3 @@ const Form = () => {
 }
 
 export default Form
-
-/**
- * should not display submit button ✅
- * should trigger submit when continue&pay button clicked ✅
- * should save data in checkout context forms data
- */
