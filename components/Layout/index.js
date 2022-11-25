@@ -4,14 +4,15 @@ import Header from './Header/Header'
 import Footer from './Footer/Footer'
 import LightBox from './LightBox'
 
-const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu, isCheckout }) => {
+const Layout = ({ children, header, footer, headerName, detailsPage, hamburgerMenu, isCheckout, metaData }) => {
+   const { title, description, keywords } = metaData
    return (
       <>
          <Head>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="description" content="page description will take a place" />
-            <meta name="keybords" content="keybord tag will take a place" />
-            <title>page title</title>
+            <meta name="description" content={description} />
+            <meta name="keybords" content={keywords} />
+            <title>{title}</title>
          </Head>
 
          <Header header={header} headerName={headerName} detailsPage={detailsPage} hamburgerMenu={hamburgerMenu} />

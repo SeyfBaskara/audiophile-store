@@ -41,13 +41,17 @@ export async function getStaticProps() {
    const productDetailsFetch = contentfulClient.getEntries({
       content_type: 'productDetails',
    })
+   const metaDataFetch = contentfulClient.getEntries({
+      content_type: 'metaData',
+   })
 
-   const [header, footer, menuWidgetProduct, posterCard, productDetails] = await Promise.all([
+   const [header, footer, menuWidgetProduct, posterCard, productDetails, metaData] = await Promise.all([
       headerFetch,
       footerFetch,
       menuWidgetFetch,
       sharedWidgetFetch,
       productDetailsFetch,
+      metaDataFetch,
    ])
 
    return {
@@ -57,17 +61,25 @@ export async function getStaticProps() {
          menuWidgetProduct: menuWidgetProduct.items,
          posterCard: posterCard.items[0].fields,
          productDetails: productDetails.items,
+         metaData: metaData.items,
       },
    }
 }
 
-const ProductDetails = ({ header, footer, menuWidgetProduct, posterCard, productDetails }) => {
+const ProductDetails = ({ header, footer, menuWidgetProduct, posterCard, productDetails, metaData }) => {
    const router = useRouter()
    const { slug } = router.query
    const { fields: productDetail } = productDetails.find((product) => product.fields.slug === slug)
+   const { fields: metaDataContent } = metaData.find((data) => data.fields.slug === slug)
 
    return (
-      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct}>
+      <Layout
+         header={header}
+         footer={footer}
+         detailsPage={true}
+         hamburgerMenu={menuWidgetProduct}
+         metaData={metaDataContent}
+      >
          <DisplayProductDetails productDetails={productDetail} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />

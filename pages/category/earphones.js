@@ -20,13 +20,17 @@ export async function getStaticProps() {
    const earphonesProductFetch = contentfulClient.getEntries({
       content_type: 'earphonesProduct',
    })
+   const metaDataFetch = contentfulClient.getEntries({
+      content_type: 'metaData',
+   })
 
-   const [header, footer, menuWidgetProduct, posterCard, earphonesProduct] = await Promise.all([
+   const [header, footer, menuWidgetProduct, posterCard, earphonesProduct, metaData] = await Promise.all([
       headerFetch,
       footerFetch,
       menuWidgetFetch,
       sharedWidgetFetch,
       earphonesProductFetch,
+      metaDataFetch,
    ])
 
    return {
@@ -36,15 +40,23 @@ export async function getStaticProps() {
          menuWidgetProduct: menuWidgetProduct.items,
          posterCard: posterCard.items[0].fields,
          earphonesProduct: earphonesProduct.items,
+         metaData: metaData.items,
       },
    }
 }
 
-const Earphones = ({ header, footer, menuWidgetProduct, posterCard, earphonesProduct }) => {
+const Earphones = ({ header, footer, menuWidgetProduct, posterCard, earphonesProduct, metaData }) => {
    const { navigation } = header
+   const { fields } = metaData.find((data) => data.fields.slug === 'earphones')
 
    return (
-      <Layout header={header} footer={footer} headerName={navigation[3].name} hamburgerMenu={menuWidgetProduct}>
+      <Layout
+         header={header}
+         footer={footer}
+         headerName={navigation[3].name}
+         hamburgerMenu={menuWidgetProduct}
+         metaData={fields}
+      >
          <ProductDisplay products={earphonesProduct} />
          <MenuWidget menuWidgetProduct={menuWidgetProduct} />
          <PosterCardWidget posterCard={posterCard} />

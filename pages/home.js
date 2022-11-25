@@ -20,13 +20,17 @@ export async function getStaticProps() {
    const displayGridContentFetch = contentfulClient.getEntries({
       content_type: 'homePage',
    })
+   const metaDataFetch = contentfulClient.getEntries({
+      content_type: 'metaData',
+   })
 
-   const [header, footer, menuWidgetProduct, posterCard, displayGridContent] = await Promise.all([
+   const [header, footer, menuWidgetProduct, posterCard, displayGridContent, metaData] = await Promise.all([
       headerFetch,
       footerFetch,
       menuWidgetFetch,
       sharedWidgetFetch,
       displayGridContentFetch,
+      metaDataFetch,
    ])
 
    return {
@@ -36,13 +40,16 @@ export async function getStaticProps() {
          menuWidgetProduct: menuWidgetProduct.items,
          posterCard: posterCard.items[0].fields,
          displayGridContent: displayGridContent.items,
+         metaData: metaData.items,
       },
    }
 }
 
-const Home = ({ header, footer, menuWidgetProduct, posterCard, displayGridContent }) => {
+const Home = ({ header, footer, menuWidgetProduct, posterCard, displayGridContent, metaData }) => {
+   const { fields } = metaData.find((data) => data.fields.slug === 'home')
+
    return (
-      <Layout header={header} footer={footer} hamburgerMenu={menuWidgetProduct}>
+      <Layout header={header} footer={footer} hamburgerMenu={menuWidgetProduct} metaData={fields}>
          <>
             <MenuWidget menuWidgetProduct={menuWidgetProduct} />
             <HomeDisplayGrid displayGridContent={displayGridContent} />

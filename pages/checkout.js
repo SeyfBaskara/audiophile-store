@@ -14,23 +14,40 @@ export async function getStaticProps() {
    const menuWidgetFetch = contentfulClient.getEntries({
       content_type: 'menuWidget',
    })
+   const metaDataFetch = contentfulClient.getEntries({
+      content_type: 'metaData',
+   })
 
-   const [header, footer, menuWidgetProduct] = await Promise.all([headerFetch, footerFetch, menuWidgetFetch])
+   const [header, footer, menuWidgetProduct, metaData] = await Promise.all([
+      headerFetch,
+      footerFetch,
+      menuWidgetFetch,
+      metaDataFetch,
+   ])
 
    return {
       props: {
          header: header.items[0].fields,
          footer: footer.items[0].fields,
          menuWidgetProduct: menuWidgetProduct.items,
+         metaData: metaData.items,
       },
    }
 }
 
-const CheckoutPage = ({ header, footer, menuWidgetProduct }) => {
+const CheckoutPage = ({ header, footer, menuWidgetProduct, metaData }) => {
    const { pathName, isModalOpen } = useThemeContext()
+   const { fields } = metaData.find((data) => data.fields.slug === 'checkout')
 
    return (
-      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} isCheckout={true}>
+      <Layout
+         header={header}
+         footer={footer}
+         detailsPage={true}
+         hamburgerMenu={menuWidgetProduct}
+         isCheckout={true}
+         metaData={fields}
+      >
          <>
             <CheckoutContents pathName={pathName} />
             {isModalOpen && <CheckoutModal />}
