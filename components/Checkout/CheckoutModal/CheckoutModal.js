@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
 import { useThemeContext } from '../../../context/ThemeContext'
@@ -10,15 +10,23 @@ import Spinner from './Spinner'
 import { useRouter } from 'next/router'
 
 const CheckoutModal = () => {
-   const { cartItems, grandTotal } = useShoppingContext()
+   const { cartItems, removeAllFromCart, grandTotal, clearLocalStorage } = useShoppingContext()
    const { setShowLightBox, setIsModalOpen } = useThemeContext()
-   const { isPaymentDone } = usePaymentContext()
+   const { isPaymentDone, setIsPaymentDone } = usePaymentContext()
    const router = useRouter()
+
+   useEffect(() => {
+      if (isPaymentDone) {
+         clearLocalStorage()
+      }
+   }, [isPaymentDone, clearLocalStorage])
 
    const handleBackToHomeButton = () => {
       router.push('/home')
       setShowLightBox(false)
       setIsModalOpen(false)
+      setIsPaymentDone(false)
+      removeAllFromCart()
    }
 
    return (
@@ -28,8 +36,8 @@ const CheckoutModal = () => {
                            sm:w-[23rem] md:w-[33rem]"
       >
          {!isPaymentDone ? (
-            <div>
-               <p>checking payment status</p>
+            <div className="flex flex-col items-center justify-center gap-5 h-96">
+               <p className="text-spanishGray font-medium text-[1.2rem]">Checking payment status...</p>
                <Spinner />
             </div>
          ) : (

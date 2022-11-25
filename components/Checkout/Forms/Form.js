@@ -27,6 +27,10 @@ const Form = () => {
       setShowLightBox(true)
       checkPaymentStatus(data)
       reset()
+
+      setTimeout(() => {
+         window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 400)
    }
 
    return (

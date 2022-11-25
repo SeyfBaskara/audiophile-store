@@ -4,7 +4,7 @@ import { useShoppingContext } from '../../context/ShoppingCartContext'
 
 const LightBox = () => {
    const [scrollY, setScrollY] = useState(0)
-   const { showLightBox } = useThemeContext()
+   const { showLightBox, isModalOpen } = useThemeContext()
    const { isCartOpen } = useShoppingContext()
 
    useEffect(() => {
@@ -30,7 +30,7 @@ const LightBox = () => {
                      ? 'top-0'
                      : isCartOpen && scrollY >= 100
                      ? 'top-0'
-                     : !isCartOpen
+                     : isModalOpen
                      ? 'top-0'
                      : 'top-20'
                }

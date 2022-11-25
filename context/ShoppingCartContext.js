@@ -4,7 +4,7 @@ import { useLocalStorage } from '../Hooks/UseLocalStorage'
 const ShoppingCartContext = createContext([])
 
 const ShoppingCartProvider = ({ children }) => {
-   const [cartItems, setCartItems] = useLocalStorage('shopping-cart', [])
+   const [cartItems, setCartItems, clearLocalStorage] = useLocalStorage('shopping-cart', [])
    const [isCartOpen, setIsCartOpen] = useState(false)
    const [cartQuantity, setCartQuantity] = useState()
 
@@ -89,6 +89,7 @@ const ShoppingCartProvider = ({ children }) => {
       shippingCost,
       vat,
       grandTotal,
+      clearLocalStorage,
    }
    return (
       <>
