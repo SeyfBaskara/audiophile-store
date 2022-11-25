@@ -21,5 +21,9 @@ export function useLocalStorage(key, initialValue = null) {
       }
    }, [key, value])
 
-   return [value, setValue]
+   const clearLocalStorage = () => {
+      return localStorage.removeItem(key)
+   }
+
+   return [value, setValue, clearLocalStorage]
 }
