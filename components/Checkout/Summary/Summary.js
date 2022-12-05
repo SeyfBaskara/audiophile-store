@@ -17,14 +17,18 @@ const Summary = () => {
    return (
       <section className="p-6 bg-white rounded-lg lg:w-6/12 lg:h-[50%] lg:mt-16">
          <h1 className="text-xl2 font-semibold tracking-wider">SUMMARY</h1>
-         <ul className="flex flex-col gap-5 my-7">
-            {cartItems.length !== 0 &&
-               cartItems?.map((item, index) => (
-                  <li key={index}>
-                     <CartItem item={item} isFromCheckout={true} />
-                  </li>
-               ))}
-         </ul>
+         <div>
+            {cartItems.length !== 0 && (
+               <ul className="flex flex-col gap-5 my-7">
+                  {cartItems?.map((item, index) => (
+                     <li key={index}>
+                        <CartItem item={item} isFromCheckout={true} />
+                     </li>
+                  ))}
+               </ul>
+            )}
+         </div>
+
          <div className="flex flex-col gap-2">
             <p className={`${style.text}`}>
                TOTAL <span className={`${style.span} text-black`}>{formatCurrency(totalPrice)}</span>
@@ -45,3 +49,8 @@ const Summary = () => {
 }
 
 export default Summary
+
+/**
+ * FIXME
+ * should fix UI Hydration error on reload page
+ */
