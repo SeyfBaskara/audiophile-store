@@ -11,10 +11,10 @@ const ShoppingCartProvider = ({ children }) => {
    const getItemQuantity = (productName) => {
       return cartItems.find((item) => item.productName === productName)?.quantity || 0
    }
-   const addItemToCart = (productName, price, quantity, image) => {
+   const addItemToCart = (productName, price, id, quantity, image) => {
       setCartItems((currItems) => {
          if (currItems.find((item) => item.productName === productName) == null) {
-            return [...currItems, { productName, price, quantity, image }]
+            return [...currItems, { productName, price, id, quantity, image }]
          } else {
             return currItems.map((item) => {
                if (item.productName === productName) {

@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useShoppingContext } from '../../context/ShoppingCartContext'
 
 const AddToCartButton = ({ customStyle, objectField, price }) => {
-   const { productName, cartImage } = objectField
+   const { productName, id, cartImage } = objectField
    const [quantity, setQuantity] = useState(1)
    const [hasClicked, setHasClicked] = useState(false)
    const { addItemToCart } = useShoppingContext()
 
    const handleAddToCart = () => {
-      addItemToCart(productName, price, quantity, cartImage)
+      addItemToCart(productName, price, id, quantity, cartImage)
       setHasClicked(true)
 
       setTimeout(() => {
