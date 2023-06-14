@@ -5,6 +5,8 @@ import PaymentDetailsInputs from './PaymentDetailsInputs'
 import ShippingInfoInputs from './ShippingInfoInputs'
 import { useThemeContext } from '../../../context/ThemeContext'
 import { usePaymentContext } from '../../../context/PaymentContext'
+import { useShoppingContext } from '../../../context/ShoppingCartContext'
+import axios from 'axios'
 
 const customStyle = {
    title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
@@ -15,6 +17,7 @@ const customStyle = {
 const Form = () => {
    const { setShowLightBox, setIsModalOpen } = useThemeContext()
    const { checkPaymentStatus } = usePaymentContext()
+   const { cartItems } = useShoppingContext()
 
    const {
       register,
@@ -23,21 +26,40 @@ const Form = () => {
       formState: { errors },
    } = useForm()
    const onSubmit = (data) => {
-      setIsModalOpen(true)
-      setShowLightBox(true)
-      checkPaymentStatus(data)
+      /**TODO
+       * get cart items from cart
+       * redirect stripe checkout session
+       * if payment is successfull then send billing and shipping in info to backend
+       *
+       */
+
+      const payload = cartItems.map((item) => {
+         const { id, quantity, productName } = item
+         return { id, productName, quantity }
+      })
+
+      axios
+         .post('http://localhost:8080/api/test', payload)
+         .then((res) => {
+            console.log(res.data)
+         })
+         .catch((err) => console.log(err))
+
+      // setIsModalOpen(true)
+      // setShowLightBox(true)
+      // checkPaymentStatus(data) // should rename the function later and implement sending data from contact to backend
       reset()
 
-      setTimeout(() => {
-         window.scrollTo({ top: 0, behavior: 'smooth' })
-      }, 400)
+      // setTimeout(() => {
+      //    window.scrollTo({ top: 0, behavior: 'smooth' })
+      // }, 400)
    }
 
    return (
       <form id="hook-form" onSubmit={handleSubmit(onSubmit)}>
          <BillingDetailsInputs register={register} style={customStyle} />
          <ShippingInfoInputs register={register} style={customStyle} />
-         <PaymentDetailsInputs register={register} style={customStyle} />
+         {/* <PaymentDetailsInputs register={register} style={customStyle} /> */}
       </form>
    )
 }
