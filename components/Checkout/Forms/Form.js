@@ -39,11 +39,17 @@ const Form = () => {
       })
 
       axios
-         .post('http://localhost:8080/api/test', payload)
+         .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
          .then((res) => {
-            console.log(res.data)
+            console.log(res)
          })
-         .catch((err) => console.log(err))
+         .catch((err) => {
+            if (err.response && err.response.status === 303) {
+               window.location.href = err.response.data.url
+            } else {
+               console.log(err)
+            }
+         })
 
       // setIsModalOpen(true)
       // setShowLightBox(true)
