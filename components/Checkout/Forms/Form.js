@@ -38,27 +38,27 @@ const Form = () => {
          return { id, productName, quantity }
       })
 
-      axios
-         .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
-         .then((res) => {
-            console.log(res)
-         })
-         .catch((err) => {
-            if (err.response && err.response.status === 303) {
-               window.location.href = err.response.data.url
-            } else {
-               console.log(err)
-            }
-         })
+      // axios
+      //    .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
+      //    .then((res) => {
+      //       console.log(res)
+      //    })
+      //    .catch((err) => {
+      //       if (err.response && err.response.status === 303) {
+      //          window.location.href = err.response.data.url
+      //       } else {
+      //          console.log(err)
+      //       }
+      //    })
 
       // setIsModalOpen(true)
       // setShowLightBox(true)
       // checkPaymentStatus(data) // should rename the function later and implement sending data from contact to backend
       reset()
 
-      // setTimeout(() => {
-      //    window.scrollTo({ top: 0, behavior: 'smooth' })
-      // }, 400)
+      setTimeout(() => {
+         window.scrollTo({ top: 0, behavior: 'smooth' })
+      }, 400)
    }
 
    return (

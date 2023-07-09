@@ -16,3 +16,7 @@ const ContinueAndPayButton = ({ handleContinueAndPay }) => {
 }
 
 export default ContinueAndPayButton
+
+/**FIXME
+ * disaable button if cart is empty if user redirect checkout by typing from url
+ */
