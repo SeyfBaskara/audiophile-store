@@ -22,7 +22,7 @@ const Cart = () => {
             {cartItems.length !== 0 ? (
                cartItems?.map((item, index) => (
                   <li key={index}>
-                     <CartItem item={item} />
+                     <CartItem item={item} isFromCheckout={true} />
                   </li>
                ))
             ) : (

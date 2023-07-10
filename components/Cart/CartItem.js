@@ -18,7 +18,7 @@ const CartItem = ({ item, isFromCheckout }) => {
                <p className="text-[1.1rem] text-spanishGray font-semibold">{formatCurrency(price)}</p>
             </div>
          </div>
-         {!isFromCheckout ? (
+         {isFromCheckout ? (
             <div className="flex items-center gap-2 bg-fleshWhite ">
                <button className="py-2 px-3 text-spanishGray" onClick={() => decreaseCartQuantity(productName)}>
                   -

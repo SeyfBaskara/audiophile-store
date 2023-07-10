@@ -1,7 +1,6 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
 import SuccessModal from '../components/Checkout/CheckoutModal/SuccessModal'
-import { useThemeContext } from '../context/ThemeContext'
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
@@ -35,18 +34,10 @@ export async function getStaticProps() {
 }
 
 const SuccessPage = ({ header, footer, menuWidgetProduct, metaData }) => {
-   const { pathName, isModalOpen } = useThemeContext()
    const { fields } = metaData.find((data) => data.fields.slug === 'checkout')
 
    return (
-      <Layout
-         header={header}
-         footer={footer}
-         detailsPage={true}
-         hamburgerMenu={menuWidgetProduct}
-         isCheckout={true}
-         metaData={fields}
-      >
+      <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} metaData={fields}>
          <>
             <SuccessModal />
          </>

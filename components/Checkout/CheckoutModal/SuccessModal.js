@@ -1,31 +1,21 @@
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
-import { useThemeContext } from '../../../context/ThemeContext'
-import { usePaymentContext } from '../../../context/PaymentContext'
 import CartItem from '../../Cart/CartItem'
 import { formatCurrency } from '../../../utils/formatCurrency'
 import BackToHomeButton from '../../Buttons/BackToHomeButton'
-import Spinner from './Spinner'
 import { useRouter } from 'next/router'
 
 const SuccessModal = () => {
    const { cartItems, removeAllFromCart, grandTotal, clearLocalStorage } = useShoppingContext()
-   const { setShowLightBox, setIsModalOpen } = useThemeContext()
-   const { isPaymentDone, setIsPaymentDone } = usePaymentContext()
    const router = useRouter()
 
    useEffect(() => {
-      if (isPaymentDone) {
-         clearLocalStorage()
-      }
-   }, [isPaymentDone, clearLocalStorage])
+      clearLocalStorage()
+   }, [clearLocalStorage])
 
    const handleBackToHomeButton = () => {
       router.push('/home')
-      setShowLightBox(false)
-      setIsModalOpen(false)
-      setIsPaymentDone(false)
       removeAllFromCart()
    }
 
@@ -43,12 +33,14 @@ const SuccessModal = () => {
                <ul className="my-7 mx-6 md:my-3 md:w-full ">
                   {cartItems.length !== 0 && (
                      <li>
-                        <CartItem item={cartItems[0]} isFromCheckout={true} />
-                        {cartItems.length > 1 && (
-                           <p className="border-t mt-2 text-center text-spanishGray text-sm pt-3">
-                              and {cartItems.length - 1} other item(s)
-                           </p>
-                        )}
+                        <CartItem item={cartItems[0]} isFromCheckout={false} />
+                        <>
+                           {cartItems.length > 1 && (
+                              <p className="border-t mt-2 text-center text-spanishGray text-sm pt-3">
+                                 and {cartItems.length - 1} other item(s)
+                              </p>
+                           )}
+                        </>
                      </li>
                   )}
                </ul>

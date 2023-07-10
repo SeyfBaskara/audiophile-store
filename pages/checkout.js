@@ -1,7 +1,6 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
 import CheckoutContents from '../components/Checkout/index'
-import CheckoutModal from '../components/Checkout/CheckoutModal/CheckoutModal'
 import { useThemeContext } from '../context/ThemeContext'
 
 export async function getStaticProps() {
@@ -36,7 +35,7 @@ export async function getStaticProps() {
 }
 
 const CheckoutPage = ({ header, footer, menuWidgetProduct, metaData }) => {
-   const { pathName, isModalOpen } = useThemeContext()
+   const { pathName } = useThemeContext()
    const { fields } = metaData.find((data) => data.fields.slug === 'checkout')
 
    return (
@@ -50,7 +49,6 @@ const CheckoutPage = ({ header, footer, menuWidgetProduct, metaData }) => {
       >
          <>
             <CheckoutContents pathName={pathName} />
-            {isModalOpen && <CheckoutModal />}
          </>
       </Layout>
    )
