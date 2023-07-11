@@ -1,9 +1,11 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
 import { useThemeContext } from '../context/ThemeContext'
+import { useShoppingContext } from '../context/ShoppingCartContext'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 import dynamic from 'next/dynamic'
-
 const CheckoutContents = dynamic(() => import('../components/Checkout/index'), { ssr: false })
 
 export async function getStaticProps() {
@@ -40,6 +42,14 @@ export async function getStaticProps() {
 const CheckoutPage = ({ header, footer, menuWidgetProduct, metaData }) => {
    const { pathName } = useThemeContext()
    const { fields } = metaData.find((data) => data.fields.slug === 'checkout')
+   const { cartItems } = useShoppingContext()
+   const router = useRouter()
+
+   useEffect(() => {
+      if (cartItems.length === 0) {
+         router.replace('/home')
+      }
+   }, [router, cartItems])
 
    return (
       <Layout
