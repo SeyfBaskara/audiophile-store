@@ -5,6 +5,7 @@ const ShoppingCartContext = createContext([])
 
 const ShoppingCartProvider = ({ children }) => {
    const [cartItems, setCartItems, clearLocalStorage] = useLocalStorage('shopping-cart', [])
+   const [purchasedCartItems, setPurchasedCartItems, clearPurchasedCartStorage] = useLocalStorage('purchased-cart', [])
    const [isCartOpen, setIsCartOpen] = useState(false)
    const [cartQuantity, setCartQuantity] = useState()
 
@@ -64,6 +65,9 @@ const ShoppingCartProvider = ({ children }) => {
    const removeAllFromCart = () => {
       setCartItems([])
    }
+   const addItemToPurchasedCart = (purchasedItems) => {
+      setPurchasedCartItems(purchasedItems)
+   }
 
    const totalPrice = cartItems?.map((item) => item.quantity * item.price).reduce((acc, curr) => acc + curr, 0)
    const shippingCost = 50
@@ -78,8 +82,10 @@ const ShoppingCartProvider = ({ children }) => {
       isCartOpen,
       setIsCartOpen,
       cartItems,
+      purchasedCartItems,
       getItemQuantity,
       addItemToCart,
+      addItemToPurchasedCart,
       increaseCartQuantity,
       decreaseCartQuantity,
       removeFromCart,
@@ -90,6 +96,7 @@ const ShoppingCartProvider = ({ children }) => {
       vat,
       grandTotal,
       clearLocalStorage,
+      clearPurchasedCartStorage,
    }
    return (
       <>

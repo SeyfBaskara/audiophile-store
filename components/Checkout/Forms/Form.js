@@ -14,7 +14,7 @@ const customStyle = {
 }
 
 const Form = () => {
-   const { cartItems } = useShoppingContext()
+   const { cartItems, addItemToPurchasedCart } = useShoppingContext()
    const router = useRouter()
 
    const {
@@ -30,6 +30,8 @@ const Form = () => {
          const { id, quantity, productName } = item
          return { id, productName, quantity }
       })
+      addItemToPurchasedCart(cartItems)
+
       // axios
       //    .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
       //    .then((res) => {

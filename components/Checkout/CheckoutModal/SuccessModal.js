@@ -7,18 +7,21 @@ import BackToHomeButton from '../../Buttons/BackToHomeButton'
 import { useRouter } from 'next/router'
 
 const SuccessModal = () => {
-   const { cartItems, removeAllFromCart, grandTotal, clearLocalStorage } = useShoppingContext()
+   const { purchasedCartItems, removeAllFromCart, grandTotal, clearLocalStorage, clearPurchasedCartStorage } =
+      useShoppingContext()
    const router = useRouter()
 
    useEffect(() => {
       if (typeof window !== 'undefined') {
          clearLocalStorage()
+         clearPurchasedCartStorage()
+         removeAllFromCart()
       }
-   }, [clearLocalStorage])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [])
 
    const handleBackToHomeButton = () => {
       router.push('/home')
-      removeAllFromCart()
    }
 
    return (
@@ -33,13 +36,13 @@ const SuccessModal = () => {
             </div>
             <div className="bg-fleshWhite rounded-md md:flex md:mt-10 ">
                <ul className="my-7 mx-6 md:my-3 md:w-full ">
-                  {cartItems.length !== 0 && (
+                  {purchasedCartItems.length !== 0 && (
                      <li>
-                        <CartItem item={cartItems[0]} isFromCheckout={false} />
+                        <CartItem item={purchasedCartItems[0]} isFromCheckout={false} />
                         <>
-                           {cartItems.length > 1 && (
+                           {purchasedCartItems.length > 1 && (
                               <p className="border-t mt-2 text-center text-spanishGray text-sm pt-3">
-                                 and {cartItems.length - 1} other item(s)
+                                 and {purchasedCartItems.length - 1} other item(s)
                               </p>
                            )}
                         </>
@@ -58,3 +61,9 @@ const SuccessModal = () => {
 }
 
 export default SuccessModal
+
+/**
+ * TODO
+ * fetch grandtotal frm purschased items instead of cart items (this should be fixed on shopping context)
+ *
+ */
