@@ -1,7 +1,10 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
-import CheckoutContents from '../components/Checkout/index'
 import { useThemeContext } from '../context/ThemeContext'
+
+import dynamic from 'next/dynamic'
+
+const CheckoutContents = dynamic(() => import('../components/Checkout/index'), { ssr: false })
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
