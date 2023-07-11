@@ -1,6 +1,10 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
+import { useShoppingContext } from '../context/ShoppingCartContext'
+
+import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 
 const SuccessModal = dynamic(() => import('../components/Checkout/CheckoutModal/SuccessModal'), { ssr: false })
 
@@ -37,6 +41,15 @@ export async function getStaticProps() {
 
 const SuccessPage = ({ header, footer, menuWidgetProduct, metaData }) => {
    const { fields } = metaData.find((data) => data.fields.slug === 'checkout')
+
+   const { purchasedCartItems } = useShoppingContext()
+   const router = useRouter()
+
+   useEffect(() => {
+      if (purchasedCartItems.length === 0) {
+         router.replace('/home')
+      }
+   }, [router, purchasedCartItems])
 
    return (
       <Layout header={header} footer={footer} detailsPage={true} hamburgerMenu={menuWidgetProduct} metaData={fields}>
