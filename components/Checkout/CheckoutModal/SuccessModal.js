@@ -11,7 +11,9 @@ const SuccessModal = () => {
    const router = useRouter()
 
    useEffect(() => {
-      clearLocalStorage()
+      if (typeof window !== 'undefined') {
+         clearLocalStorage()
+      }
    }, [clearLocalStorage])
 
    const handleBackToHomeButton = () => {

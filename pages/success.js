@@ -1,6 +1,8 @@
 import contentfulClient from '../utils/contentfulClient'
 import Layout from '../components/Layout/index'
-import SuccessModal from '../components/Checkout/CheckoutModal/SuccessModal'
+import dynamic from 'next/dynamic'
+
+const SuccessModal = dynamic(() => import('../components/Checkout/CheckoutModal/SuccessModal'), { ssr: false })
 
 export async function getStaticProps() {
    const headerFetch = contentfulClient.getEntries({
