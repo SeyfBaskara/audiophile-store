@@ -1,11 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import BillingDetailsInputs from './BillingDetailsInputs'
-import PaymentDetailsInputs from './PaymentDetailsInputs'
 import ShippingInfoInputs from './ShippingInfoInputs'
 import { useShoppingContext } from '../../../context/ShoppingCartContext'
 import axios from 'axios'
-import { useRouter } from 'next/router'
 
 const customStyle = {
    title: 'text-sm text-peruOrange font-semibold tracking-wider mb-3',
@@ -15,7 +13,6 @@ const customStyle = {
 
 const Form = () => {
    const { cartItems, addItemToPurchasedCart } = useShoppingContext()
-   const router = useRouter()
 
    const {
       register,
@@ -24,25 +21,23 @@ const Form = () => {
       formState: { errors },
    } = useForm()
    const onSubmit = (data) => {
-      router.push('/success')
-
       const payload = cartItems.map((item) => {
          const { id, quantity, productName } = item
          return { id, productName, quantity }
       })
 
-      // axios
-      //    .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
-      //    .then((res) => {
-      //       console.log(res)
-      //    })
-      //    .catch((err) => {
-      //       if (err.response && err.response.status === 303) {
-      //          window.location.href = err.response.data.url
-      //       } else {
-      //          console.log(err)
-      //       }
-      //    })
+      axios
+         .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
+         .then((res) => {
+            console.log(res)
+         })
+         .catch((err) => {
+            if (err.response && err.response.status === 303) {
+               window.location.href = err.response.data.url
+            } else {
+               console.log(err)
+            }
+         })
 
       addItemToPurchasedCart(cartItems)
 
@@ -59,8 +54,3 @@ const Form = () => {
 }
 
 export default Form
-
-/**NOTE
- * prevent user to continue&pay if cart is empty
- * give notification msg "Cart is empty "
- */
