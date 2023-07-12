@@ -20,24 +20,29 @@ const Form = () => {
       reset,
       formState: { errors },
    } = useForm()
-   const onSubmit = (data) => {
-      const payload = cartItems.map((item) => {
-         const { id, quantity, productName } = item
-         return { id, productName, quantity }
-      })
+   const onSubmit = async (data) => {
+      try {
+         const payload = cartItems.map((item) => {
+            const { id, quantity, productName } = item
+            return { id, productName, quantity }
+         })
 
-      axios
-         .post('http://localhost:8080/api/create-checkout-session', payload, { maxRedirects: 0 })
-         .then((res) => {
-            console.log(res)
+         const response = await axios.post('http://localhost:8080/api/create-checkout-session', payload, {
+            maxRedirects: 0,
          })
-         .catch((err) => {
-            if (err.response && err.response.status === 303) {
-               window.location.href = err.response.data.url
-            } else {
-               console.log(err)
-            }
-         })
+
+         console.log(response.data)
+
+         if (response.status === 303) {
+            window.location.href = response.data.url
+         }
+      } catch (err) {
+         if (err.response && err.response.status === 303) {
+            window.location.href = err.response.data.url
+         } else {
+            console.error(err) //TODO must display a user-friendly error message on the UI
+         }
+      }
 
       addItemToPurchasedCart(cartItems)
 
