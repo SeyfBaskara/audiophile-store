@@ -27,9 +27,13 @@ const Form = () => {
             return { id, productName, quantity }
          })
 
-         const response = await axios.post('http://localhost:8080/api/create-checkout-session', payload, {
-            maxRedirects: 0,
-         })
+         const response = await axios.post(
+            'https://stripe-paymant-session.onrender.com/api/create-checkout-session',
+            payload,
+            {
+               maxRedirects: 0,
+            }
+         )
 
          console.log(response.data)
 
